@@ -149,9 +149,12 @@ commodity_aliases:
   "logistics": "Logistics"
   "transport": "Logistics"
   "services": "Services"
-  "indirect": "Indirect"
-  "direct materials": "Direct"
-  "indirect materials": "Indirect"
+  # NOTE: Do NOT add commodity aliases for "direct" / "indirect" /
+  # "direct materials" / "indirect materials". The words "direct" and
+  # "indirect" in a user query are VIEW-ROUTING hints (which view to query)
+  # — not filters on COMMODITY. Adding them here causes the pipeline to
+  # emit spurious WHERE COMMODITY_DESCRIPTION LIKE '%INDIRECT%' filters
+  # that return zero rows.
 
 # Plant aliases - German names with umlauts
 # Maps ASCII/English spellings to actual database values with umlauts
