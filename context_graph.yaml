@@ -1,0 +1,507 @@
+# Context Graph: Links question patterns to database columns
+# Answers: "Which columns answer which types of questions?"
+
+metadata:
+  name: "Question-to-Column Context Graph"
+  version: "1.0"
+
+question_types:
+  # Aggregation questions
+  total_spend:
+    patterns:
+      - "total spend"
+      - "how much spent"
+      - "what is the spend"
+      - "total cost"
+      - "total expenditure"
+      - "overall spend"
+      - "sum of spend"
+    measure: AMOUNT
+    aggregation: SUM
+    alias: "TOTAL_SPEND"
+
+  average_spend:
+    patterns:
+      - "average spend"
+      - "avg cost"
+      - "mean expenditure"
+      - "typical spend"
+      - "average transaction"
+    measure: AMOUNT
+    aggregation: AVG
+    alias: "AVG_SPEND"
+
+  count_transactions:
+    patterns:
+      - "number of transactions"
+      - "how many invoices"
+      - "transaction count"
+      - "invoice count"
+      - "count of purchases"
+    measure: INVOICE_NO
+    aggregation: COUNT_DISTINCT
+    alias: "TRANSACTION_COUNT"
+
+  count_suppliers:
+    patterns:
+      - "number of suppliers"
+      - "how many suppliers"
+      - "how many vendors"
+      - "supplier count"
+      - "vendor count"
+      - "unique suppliers"
+    measure: SUPPLIER_NO
+    aggregation: COUNT_DISTINCT
+    alias: "SUPPLIER_COUNT"
+
+  count_plants:
+    patterns:
+      - "number of plants"
+      - "how many plants"
+      - "how many factories"
+      - "plant count"
+      - "factory count"
+      - "unique plants"
+    measure: PLANT_NO
+    aggregation: COUNT_DISTINCT
+    alias: "PLANT_COUNT"
+
+  max_spend:
+    patterns:
+      - "highest spend"
+      - "maximum spend"
+      - "largest transaction"
+      - "biggest cost"
+    measure: AMOUNT
+    aggregation: MAX
+    alias: "MAX_SPEND"
+
+  min_spend:
+    patterns:
+      - "lowest spend"
+      - "minimum spend"
+      - "smallest transaction"
+      - "least cost"
+    measure: AMOUNT
+    aggregation: MIN
+    alias: "MIN_SPEND"
+
+  # Dimension questions
+  by_supplier:
+    patterns:
+      - "by supplier"
+      - "per supplier"
+      - "for each supplier"
+      - "per vendor"
+      - "by vendor"
+      - "supplier wise"
+    group_by: SUPPLIER_NAME
+    include_columns: [SUPPLIER_NO]
+
+  by_region:
+    patterns:
+      - "by region"
+      - "per region"
+      - "for each region"
+      - "regional"
+      - "region wise"
+    group_by: REGION
+
+  by_country:
+    patterns:
+      - "by country"
+      - "per country"
+      - "for each country"
+      - "country wise"
+    group_by: COUNTRY
+
+  by_plant:
+    patterns:
+      - "by plant"
+      - "per plant"
+      - "for each plant"
+      - "by factory"
+      - "per factory"
+      - "plant wise"
+    group_by: PLANT_NAME
+    include_columns: [PLANT_NO]
+
+  by_commodity:
+    patterns:
+      - "by commodity"
+      - "by category"
+      - "per category"
+      - "by spend category"
+      - "category wise"
+    group_by: COMMODITY_DESCRIPTION
+    include_columns: [COMMODITY]
+
+  by_material_group:
+    patterns:
+      - "by material group"
+      - "by subcategory"
+      - "per material group"
+      - "by sub-category"
+    group_by: MATERIAL_GROUP
+    include_columns: [COMMODITY]
+
+  by_year:
+    patterns:
+      - "by year"
+      - "per year"
+      - "yearly"
+      - "annual"
+      - "by fiscal year"
+      - "year wise"
+    group_by: "YEAR(INVOICE_DATE)"
+
+  by_month:
+    patterns:
+      - "by month"
+      - "per month"
+      - "monthly"
+    group_by: "MONTH(INVOICE_DATE)"
+
+  by_buyer:
+    patterns:
+      - "by buyer"
+      - "by purchaser"
+      - "by purchasing agent"
+      - "per buyer"
+      - "buyer wise"
+    group_by: PURCHASING_AGENT_NAME
+
+  # Filter questions
+  filter_year:
+    patterns:
+      - "in year"
+      - "for year"
+      - "year"
+      - "fiscal year"
+      - "fy"
+      - "during"
+    filter_column: "YEAR(INVOICE_DATE)"
+    filter_type: equals
+
+  filter_region:
+    patterns:
+      - "in region"
+      - "for region"
+      - "region"
+    filter_column: REGION
+    filter_type: equals
+
+  filter_supplier:
+    patterns:
+      - "from supplier"
+      - "for supplier"
+      - "supplier"
+      - "vendor"
+    filter_column: SUPPLIER_NAME
+    filter_type: contains
+
+  filter_plant:
+    patterns:
+      - "at plant"
+      - "for plant"
+      - "plant"
+      - "factory"
+    filter_column: PLANT_NAME
+    filter_type: contains
+
+  # Ranking questions
+  top_n:
+    patterns:
+      - "top"
+      - "highest"
+      - "largest"
+      - "biggest"
+      - "most"
+      - "leading"
+      - "best"
+    order: DESC
+    limit: extract_number
+
+  bottom_n:
+    patterns:
+      - "bottom"
+      - "lowest"
+      - "smallest"
+      - "least"
+      - "worst"
+      - "fewest"
+    order: ASC
+    limit: extract_number
+
+  # Comparison questions
+  compare:
+    patterns:
+      - "compare"
+      - "versus"
+      - "vs"
+      - "compared to"
+      - "against"
+      - "difference"
+    query_type: comparison
+
+  trend:
+    patterns:
+      - "trend"
+      - "over time"
+      - "year over year"
+      - "yoy"
+      - "growth"
+      - "change"
+    query_type: trend
+    default_group_by: "YEAR(INVOICE_DATE)"
+
+  # NEW PATTERNS FOR WEAK INTENTS (Phase 16.1)
+
+  # Comparison patterns - growth, decline, change
+  comparison_growth:
+    patterns:
+      - "growth"
+      - "increase"
+      - "grew"
+      - "risen"
+      - "rising"
+      - "up from"
+    query_type: comparison
+    sql_hint: "Compare current vs previous period"
+
+  comparison_decline:
+    patterns:
+      - "decline"
+      - "decrease"
+      - "dropped"
+      - "fell"
+      - "falling"
+      - "down from"
+      - "reduced"
+    query_type: comparison
+    sql_hint: "Compare current vs previous period"
+
+  comparison_change:
+    patterns:
+      - "change"
+      - "variance"
+      - "different"
+      - "changed"
+      - "movement"
+      - "shift"
+    query_type: comparison
+    sql_hint: "Calculate difference between periods"
+
+  comparison_yoy:
+    patterns:
+      - "yoy"
+      - "year over year"
+      - "year-over-year"
+      - "compared to last year"
+      - "vs last year"
+      - "vs previous year"
+    query_type: comparison
+    default_group_by: "YEAR(INVOICE_DATE)"
+
+  comparison_mom:
+    patterns:
+      - "mom"
+      - "month over month"
+      - "month-over-month"
+      - "compared to last month"
+      - "vs last month"
+      - "vs previous month"
+    query_type: comparison
+    default_group_by: "MONTH(INVOICE_DATE)"
+
+  # Time series patterns - monthly, quarterly, weekly
+  time_series_monthly:
+    patterns:
+      - "monthly"
+      - "by month"
+      - "per month"
+      - "each month"
+      - "month by month"
+      - "months"
+    query_type: time_series
+    group_by: "YEAR(INVOICE_DATE), MONTH(INVOICE_DATE)"
+    order_by: "YEAR, MONTH"
+
+  time_series_quarterly:
+    patterns:
+      - "quarterly"
+      - "by quarter"
+      - "per quarter"
+      - "each quarter"
+      - "q1"
+      - "q2"
+      - "q3"
+      - "q4"
+    query_type: time_series
+    group_by: "FORMAT(INVOICE_DATE, 'yyyy') + '-Q' + CAST(DATEPART(QUARTER, INVOICE_DATE) AS NVARCHAR)"
+    order_by: "QUARTER"
+
+  time_series_weekly:
+    patterns:
+      - "weekly"
+      - "by week"
+      - "per week"
+      - "each week"
+      - "week over week"
+    query_type: time_series
+    group_by: "FORMAT(INVOICE_DATE, 'yyyy-ww')"
+    order_by: "WEEK"
+
+  time_series_daily:
+    patterns:
+      - "daily"
+      - "by day"
+      - "per day"
+      - "each day"
+      - "day by day"
+    query_type: time_series
+    group_by: "CAST(INVOICE_DATE AS DATE)"
+    order_by: "INVOICE_DATE"
+
+  time_series_evolution:
+    patterns:
+      - "evolution"
+      - "progression"
+      - "throughout"
+      - "across time"
+      - "over the year"
+      - "over months"
+    query_type: time_series
+    default_group_by: "YEAR(INVOICE_DATE)"
+
+  # Enumerate patterns - list, what are, which
+  enumerate_list:
+    patterns:
+      - "list"
+      - "list all"
+      - "show all"
+      - "show me all"
+      - "display all"
+      - "get all"
+    query_type: enumerate
+    sql_hint: "SELECT DISTINCT column"
+
+  enumerate_what:
+    patterns:
+      - "what are"
+      - "what are the"
+      - "what is the"
+      - "what's"
+    query_type: enumerate
+    sql_hint: "SELECT DISTINCT column"
+
+  enumerate_which:
+    patterns:
+      - "which"
+      - "which are"
+      - "which is"
+    query_type: enumerate
+    sql_hint: "SELECT DISTINCT column"
+
+  enumerate_available:
+    patterns:
+      - "available"
+      - "existing"
+      - "different"
+      - "distinct"
+      - "unique values"
+    query_type: enumerate
+    sql_hint: "SELECT DISTINCT column"
+
+  # Filter patterns - negation
+  filter_negation:
+    patterns:
+      - "excluding"
+      - "except"
+      - "not including"
+      - "without"
+      - "other than"
+      - "besides"
+    filter_type: negation
+    sql_hint: "WHERE column NOT IN (...)"
+
+  filter_range:
+    patterns:
+      - "between"
+      - "from ... to"
+      - "range"
+    filter_type: range
+    sql_hint: "WHERE column BETWEEN ... AND ..."
+
+  filter_threshold_above:
+    patterns:
+      - "above"
+      - "over"
+      - "more than"
+      - "greater than"
+      - "exceeds"
+      - "at least"
+    filter_type: threshold
+    operator: ">"
+
+  filter_threshold_below:
+    patterns:
+      - "below"
+      - "under"
+      - "less than"
+      - "fewer than"
+      - "at most"
+    filter_type: threshold
+    operator: "<"
+
+# Common query templates combining question types
+query_templates:
+  spend_by_dimension:
+    description: "Total spend grouped by a dimension"
+    example: "total spend by supplier"
+    sql_template: |
+      SELECT {dimension}, SUM(AMOUNT) AS TOTAL_SPEND
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      {where_clause}
+      GROUP BY {dimension}
+      ORDER BY TOTAL_SPEND DESC
+
+  top_n_by_spend:
+    description: "Top N entities by spend"
+    example: "top 10 suppliers by spend"
+    sql_template: |
+      SELECT TOP {n} {dimension}, SUM(AMOUNT) AS TOTAL_SPEND
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      {where_clause}
+      GROUP BY {dimension}
+      ORDER BY TOTAL_SPEND DESC
+
+  spend_trend:
+    description: "Spend over time"
+    example: "spend trend by year"
+    sql_template: |
+      SELECT YEAR(INVOICE_DATE) AS YEAR, SUM(AMOUNT) AS TOTAL_SPEND
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      {where_clause}
+      GROUP BY YEAR(INVOICE_DATE)
+      ORDER BY YEAR
+
+  count_by_dimension:
+    description: "Count entities by dimension"
+    example: "number of suppliers by region"
+    sql_template: |
+      SELECT {dimension}, COUNT(DISTINCT {count_column}) AS COUNT
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      {where_clause}
+      GROUP BY {dimension}
+      ORDER BY COUNT DESC
+
+  spend_comparison:
+    description: "Compare spend across two dimensions"
+    example: "spend by region and year"
+    sql_template: |
+      SELECT {dimension1}, {dimension2}, SUM(AMOUNT) AS TOTAL_SPEND
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      {where_clause}
+      GROUP BY {dimension1}, {dimension2}
+      ORDER BY {dimension1}, {dimension2}

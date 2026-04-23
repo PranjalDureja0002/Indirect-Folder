@@ -1,0 +1,101 @@
+view_name: dbo.VW_INDIRECT_SPEND_ALL
+total_rows: 686204
+column_count: 50
+date_ranges:
+  INVOICE_DATE:
+    min: '2024-04-01 00:00:00'
+    max: '2026-01-31 00:00:00'
+    distinct_dates: 667
+  _migrated_at:
+    min: '2026-04-16 05:58:29'
+    max: '2026-04-16 06:28:54'
+    distinct_dates: 1826
+numeric_stats:
+  NET_PRICE:
+    min: 0.0
+    max: 36060153.12
+    avg: 18417.66
+    sum: 12622008734.72
+    stddev: 269383.12
+  PRICE_UNIT:
+    min: 0.0
+    max: 90721.0
+    avg: 16.29
+    sum: 11175195.0
+    stddev: 473.27
+  AMOUNT:
+    min: -33269051.0
+    max: 33269051.0
+    avg: 1892.36
+    sum: 1298543199.78
+    stddev: 85368.17
+  VOUCHER_AMOUNT:
+    min: -33269051.0
+    max: 77618705.0
+    avg: 15391.58
+    sum: 10561760676.52
+    stddev: 446137.03
+  EXCH_RATE:
+    min: 1.0
+    max: 118.893
+    avg: 5.75
+    sum: 3943691.15
+    stddev: 20.47
+column_groups:
+  date_columns:
+  - INVOICE_DATE
+  - _migrated_at
+  numeric_columns:
+  - NET_PRICE
+  - PRICE_UNIT
+  - INVOICE_NO
+  - INVOICE_POS_NO
+  - QUANTITY
+  - AMOUNT
+  - VOUCHER_AMOUNT
+  - EXCH_RATE
+  - _migration_batch
+  text_columns:
+  - REGION
+  - PURCHASE_ORG
+  - PLANT_NO
+  - PLANT_NAME
+  - ORDER_NO
+  - ORDER_POS_NO
+  - SUPPLIER_NO
+  - SUPPLIER_NAME
+  - COUNTRY
+  - SUPP_DUNS_NO
+  - MATERIAL_TYPE
+  - ARTICLE_NO
+  - MATERIAL_DESCRIPTION
+  - PAYMENT_TERM
+  - MEASURE_UNIT
+  - INCO_TERM
+  - Com. Supplier
+  - Comm supplier desc.
+  - NATION
+  - ACCOUNT_GROUP
+  - TERMS_OF_PAYMENT_DESCRIPTION
+  - COUNTRY_OF_ORIGIN
+  - INVOICE_AMOUNT_CURRENCY_LOCAL
+  - MATERIAL_GROUP
+  - COMMODITY
+  - COMMODITY_DESCRIPTION
+  - PURCHASING_AGENT_NO
+  - PURCHASING_AGENT_NAME
+  - INVOICE_AMOUNT_CURRENCY
+  - VOUCHER_NETPRICE_CURRENCY
+  - PO_QUANTITY
+  - RECORD_TYPE
+  - MAIN_ACCOUNT
+  - ABC_INDICATOR
+  - PARENT_DUNS
+  - PARENT_SUPPLIER_NAME
+  - PROPOSED_CATEGORY
+  - L0_FILTER
+  - MEASURE_UNIT_DESCRIPTION
+data_freshness:
+  latest_record_date: '2026-01-31 00:00:00'
+  days_since_latest: 80
+  reference_column: INVOICE_DATE

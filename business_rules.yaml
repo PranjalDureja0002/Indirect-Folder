@@ -1,0 +1,360 @@
+# Business rules for NL2SQL
+# Defines metrics, filters, and domain-specific logic
+
+# Metric definitions
+metrics:
+  total_spend:
+    name: "Total Spend"
+    formula: "SUM(AMOUNT)"
+    description: "Total procurement spend amount in EUR (budget currency)"
+    column: AMOUNT
+    aggregation: SUM
+    currency: EUR
+    usage: "Default spend metric for any 'total' or 'overall' spend questions. AMOUNT is already converted to EUR."
+
+  ytd_spend:
+    name: "Year-to-Date Spend"
+    formula: "SUM(AMOUNT)"
+    description: "Year-to-date spend from Jan 1 of current year"
+    column: AMOUNT
+    aggregation: SUM
+    filter: "INVOICE_DATE >= DATEFROMPARTS(YEAR(GETDATE()), 1, 1)"
+    usage: "When user asks for YTD or year-to-date spend"
+
+  spend_count:
+    name: "Transaction Count"
+    formula: "COUNT(*)"
+    description: "Number of transactions/invoices"
+    aggregation: COUNT
+    usage: "When user asks for number of transactions or purchases"
+
+  avg_transaction:
+    name: "Average Transaction"
+    formula: "AVG(AMOUNT)"
+    description: "Average transaction amount"
+    column: AMOUNT
+    aggregation: AVG
+    usage: "When user asks for average spend per transaction"
+
+  unique_suppliers:
+    name: "Unique Suppliers"
+    formula: "COUNT(DISTINCT SUPPLIER_NO)"
+    description: "Count of distinct suppliers"
+    column: SUPPLIER_NO
+    aggregation: COUNT_DISTINCT
+    usage: "When user asks for number of suppliers or supplier count"
+
+  unique_plants:
+    name: "Unique Plants"
+    formula: "COUNT(DISTINCT PLANT_NO)"
+    description: "Count of distinct plants"
+    column: PLANT_NO
+    aggregation: COUNT_DISTINCT
+    usage: "When user asks for number of plants or facility count"
+
+  unique_invoices:
+    name: "Unique Invoices"
+    formula: "COUNT(DISTINCT INVOICE_NO)"
+    description: "Count of distinct invoices"
+    column: INVOICE_NO
+    aggregation: COUNT_DISTINCT
+    usage: "When user asks for number of invoices"
+
+  spend_per_supplier:
+    name: "Spend per Supplier"
+    formula: "SUM(AMOUNT) / NULLIF(COUNT(DISTINCT SUPPLIER_NO), 0)"
+    description: "Average spend per supplier"
+    usage: "When user asks for average spend per supplier"
+
+  spend_per_plant:
+    name: "Spend per Plant"
+    formula: "SUM(AMOUNT) / NULLIF(COUNT(DISTINCT PLANT_NO), 0)"
+    description: "Average spend per plant"
+    usage: "When user asks for average spend per plant/facility"
+
+  max_spend:
+    name: "Maximum Spend"
+    formula: "MAX(AMOUNT)"
+    description: "Highest single transaction amount"
+    column: AMOUNT
+    aggregation: MAX
+    usage: "When user asks for largest or highest spend transaction"
+
+  min_spend:
+    name: "Minimum Spend"
+    formula: "MIN(AMOUNT)"
+    description: "Lowest single transaction amount"
+    column: AMOUNT
+    aggregation: MIN
+    usage: "When user asks for smallest or lowest spend transaction"
+
+# Time filter definitions
+time_filters:
+  current_year:
+    name: "Current Year"
+    filter: "YEAR(INVOICE_DATE) = YEAR(GETDATE())"
+    description: "Filter for current calendar year"
+    triggers:
+      - "this year"
+      - "current year"
+
+  previous_year:
+    name: "Previous Year"
+    filter: "YEAR(INVOICE_DATE) = YEAR(GETDATE()) - 1"
+    description: "Filter for previous calendar year"
+    triggers:
+      - "last year"
+      - "previous year"
+      - "prior year"
+
+  year_specific:
+    name: "Specific Year"
+    filter_template: "YEAR(INVOICE_DATE) = {year}"
+    description: "Filter for a specific year"
+    triggers:
+      - "in {year}"
+      - "for {year}"
+      - "year {year}"
+
+  year_range:
+    name: "Year Range"
+    filter_template: "YEAR(INVOICE_DATE) BETWEEN {start_year} AND {end_year}"
+    description: "Filter for range of years"
+    triggers:
+      - "from {start} to {end}"
+      - "between {start} and {end}"
+
+  ytd:
+    name: "Year to Date"
+    filter: "INVOICE_DATE >= DATEFROMPARTS(YEAR(GETDATE()), 1, 1)"
+    description: "From start of current year to today"
+    triggers:
+      - "ytd"
+      - "year to date"
+      - "year-to-date"
+
+  last_n_months:
+    name: "Last N Months"
+    filter_template: "INVOICE_DATE >= DATEADD(MONTH, -{months}, GETDATE())"
+    description: "Last N months of data"
+    triggers:
+      - "last {n} months"
+      - "past {n} months"
+
+# Exclusion rules (data quality)
+exclusion_rules:
+  exclude_credits:
+    name: "Exclude Credit Memos"
+    filter: "AMOUNT > 0"
+    description: "Exclude negative amounts (credit memos, reversals)"
+    when_to_apply: "For spend analysis, exclude negative transactions"
+
+  valid_suppliers:
+    name: "Valid Suppliers Only"
+    filter: "SUPPLIER_NO IS NOT NULL"
+    description: "Exclude transactions without supplier"
+    when_to_apply: "For supplier analysis, ensure supplier is populated"
+
+  valid_amounts:
+    name: "Valid Amounts"
+    filter: "AMOUNT IS NOT NULL AND AMOUNT != 0"
+    description: "Exclude null or zero amounts"
+    when_to_apply: "For meaningful spend analysis"
+
+  valid_plants:
+    name: "Valid Plants Only"
+    filter: "PLANT_NO IS NOT NULL"
+    description: "Exclude transactions without plant"
+    when_to_apply: "For plant-level analysis"
+
+# SQL Server-specific syntax notes
+sqlserver_syntax:
+  limit_rows:
+    description: "SQL Server uses SELECT TOP N instead of LIMIT"
+    correct: "SELECT TOP 10 col FROM table ORDER BY col DESC"
+    incorrect: "ORDER BY col DESC LIMIT 10"
+
+  date_functions:
+    description: "SQL Server date functions"
+    current_date: "GETDATE()"
+    year_start: "DATEFROMPARTS(YEAR(GETDATE()), 1, 1)"
+    extract_year: "YEAR(date_col)"
+    to_char_year: "FORMAT(date_col, 'yyyy')"
+    add_months: "DATEADD(MONTH, n, date)"
+
+  null_handling:
+    description: "SQL Server NULL handling"
+    nvl: "ISNULL(column, default_value)"
+    coalesce: "COALESCE(col1, col2, default)"
+    nullif: "NULLIF(value1, value2)"
+
+  string_functions:
+    description: "SQL Server string functions"
+    upper: "UPPER(column)"
+    lower: "LOWER(column)"
+    concat: "column1 + column2"
+    like: "column LIKE '%pattern%'"
+
+  aggregation_notes:
+    description: "Aggregation best practices"
+    notes:
+      - "Always use GROUP BY for non-aggregated columns in SELECT"
+      - "Use HAVING for filtering aggregated values"
+      - "ISNULL for handling NULL in aggregations"
+
+# Common query templates
+query_templates:
+  top_n_by_spend:
+    description: "Top N items by spend"
+    template: |
+      SELECT TOP {n} {dimension}, SUM(AMOUNT) as total_spend
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      WHERE {filters}
+      GROUP BY {dimension}
+      ORDER BY total_spend DESC
+
+  spend_by_dimension:
+    description: "Spend breakdown by dimension"
+    template: |
+      SELECT {dimension}, SUM(AMOUNT) as total_spend
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      WHERE {filters}
+      GROUP BY {dimension}
+      ORDER BY total_spend DESC
+
+  trend_by_year:
+    description: "Year-over-year trend"
+    template: |
+      SELECT YEAR(INVOICE_DATE) as year, SUM(AMOUNT) as total_spend
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      WHERE {filters}
+      GROUP BY YEAR(INVOICE_DATE)
+      ORDER BY year
+
+  comparison:
+    description: "Compare two dimensions"
+    template: |
+      SELECT {dim1}, {dim2}, SUM(AMOUNT) as total_spend
+      FROM DBO.VW_INDIRECT_SPEND_ALL
+      WHERE {filters}
+      GROUP BY {dim1}, {dim2}
+      ORDER BY total_spend DESC
+
+# Derived Classifications - Business-specific classification mappings
+derived_classifications:
+  supplier_type:
+    name: "Supplier Classification"
+    description: "Classifies suppliers as Motherson Group (G) or External (S/O/N/null).
+      Column is ABC_INDICATOR. Values: S=Strategic, O=Other, G=Group, N=New, null=Unclassified."
+    mappings:
+      motherson_group:
+        label: "Motherson Group"
+        sql_pattern: "ABC_INDICATOR = 'G'"
+      external:
+        label: "External"
+        sql_pattern: "ABC_INDICATOR IN ('O','N','S') OR ABC_INDICATOR IS NULL"
+      strategic:
+        label: "Strategic External"
+        sql_pattern: "ABC_INDICATOR = 'S'"
+      other_external:
+        label: "Other External"
+        sql_pattern: "ABC_INDICATOR = 'O'"
+    usage: "Filter or GROUP BY supplier classification"
+
+  incoterm_responsibility:
+    name: "Incoterm Responsibility"
+    description: "Cost responsibility based on Incoterm. NULL/blank = Unclassified."
+    mappings:
+      buyer_responsible:
+        label: "Buyer Responsible"
+        incoterms: [EXW, FCA, FOB, CIF]
+        sql_pattern: "INCO_TERM IN ('EXW','FCA','FOB','CIF')"
+      supplier_responsible:
+        label: "Supplier Responsible"
+        incoterms: [DAP, DDP, DDU]
+        sql_pattern: "INCO_TERM IN ('DAP','DDP','DDU')"
+      shared_responsibility:
+        label: "Shared Responsibility"
+        incoterms: [CPT, CIP]
+        sql_pattern: "INCO_TERM IN ('CPT','CIP')"
+      unknown:
+        label: "Unknown"
+        sql_pattern: "INCO_TERM = '999'"
+      unclassified:
+        label: "Unclassified"
+        sql_pattern: "INCO_TERM IS NULL"
+    case_when: "CASE WHEN INCO_TERM IN ('EXW','FCA','FOB','CIF') THEN 'Buyer' WHEN INCO_TERM IN ('DAP','DDP','DDU') THEN 'Supplier' WHEN INCO_TERM IN ('CPT','CIP') THEN 'Shared' WHEN INCO_TERM = '999' THEN 'Unknown' ELSE 'Unclassified' END"
+    usage: "Analyze cost responsibility distribution"
+
+  lcc_analysis:
+    name: "LCC Analysis"
+    description: "Composite classification combining supplier type with cost country sourcing.
+      ABC_INDICATOR='G' (Motherson Group) = Insourcing. For external suppliers, PROPOSED_CATEGORY='HCC' = High Cost Country,
+      otherwise = MCC/LCC (Mid/Low Cost Country). Three possible values: Insourcing, HCC, MCC/LCC."
+    source_columns: [ABC_INDICATOR, PROPOSED_CATEGORY]
+    mappings:
+      insourcing:
+        label: "Insourcing"
+        sql_pattern: "ABC_INDICATOR = 'G'"
+        meaning: "Sourced from Motherson Group (internal supplier)"
+      hcc:
+        label: "HCC"
+        sql_pattern: "(ABC_INDICATOR != 'G' OR ABC_INDICATOR IS NULL) AND PROPOSED_CATEGORY = 'HCC'"
+        meaning: "External supplier from High Cost Country"
+      mcc_lcc:
+        label: "MCC/LCC"
+        sql_pattern: "(ABC_INDICATOR != 'G' OR ABC_INDICATOR IS NULL) AND (PROPOSED_CATEGORY != 'HCC' OR PROPOSED_CATEGORY IS NULL)"
+        meaning: "External supplier from Mid or Low Cost Country"
+    case_when: "CASE WHEN ABC_INDICATOR = 'G' THEN 'Insourcing' WHEN PROPOSED_CATEGORY = 'HCC' THEN 'HCC' ELSE 'MCC/LCC' END"
+    usage: "Analyze sourcing strategy by LCC/insourcing breakdown. Use as SELECT/GROUP BY dimension."
+
+# Currency Conversion Rules
+currency_conversion:
+  description: "AMOUNT is stored in EUR (budget currency). To convert to another currency,
+    use SUM(AMOUNT * EXCH_RATE) WHERE INVOICE_AMOUNT_CURRENCY = '<target>'.
+    Each row has an INVOICE_AMOUNT_CURRENCY and EXCH_RATE for that currency.
+    If user does NOT mention a currency, use SUM(AMOUNT) which is EUR.
+    If user says 'in MXN' / 'in USD' / 'in INR' etc., filter by INVOICE_AMOUNT_CURRENCY and multiply."
+  default_currency: "EUR"
+  default_formula: "SUM(AMOUNT)"
+  conversion_formula: "SUM(AMOUNT * EXCH_RATE)"
+  conversion_filter: "INVOICE_AMOUNT_CURRENCY = '{currency_code}'"
+  triggers:
+    - "in USD"
+    - "in MXN"
+    - "in INR"
+    - "in GBP"
+    - "in CNY"
+    - "in JPY"
+    - "in local currency"
+    - "convert to"
+    - "currency"
+    - "dollars"
+    - "pesos"
+    - "rupees"
+    - "pounds"
+    - "yuan"
+    - "yen"
+  common_currencies:
+    EUR: "Euro (default, no conversion needed)"
+    USD: "US Dollar"
+    MXN: "Mexican Peso"
+    INR: "Indian Rupee"
+    CNY: "Chinese Yuan"
+    GBP: "British Pound"
+    JPY: "Japanese Yen"
+    HUF: "Hungarian Forint"
+    CHF: "Swiss Franc"
+    CZK: "Czech Koruna"
+    RSD: "Serbian Dinar"
+
+# Default Assumptions - Context for ambiguous queries
+defaults:
+  currency: "EUR"
+  spend_metric: "SUM(AMOUNT)"
+  spend_column: "AMOUNT"
+  date_column: "INVOICE_DATE"
+  default_aggregation: "SUM"
+  exclude_credit_memos: true
+  fiscal_year_start: "04-01"
+  fiscal_year_end: "03-31"

@@ -1,0 +1,187 @@
+# Entity Aliases for Fuzzy Matching
+# Maps common user terms to actual database values
+
+metadata:
+  version: "1.0"
+  description: "Entity value aliases for improved NL2SQL matching"
+
+# Region aliases - user term -> actual database value
+region_aliases:
+  # Germany and Eastern Europe region
+  "germany": "Germany and Eastern Europe"
+  "german": "Germany and Eastern Europe"
+  "eastern europe": "Germany and Eastern Europe"
+  "east europe": "Germany and Eastern Europe"
+  "deu": "Germany and Eastern Europe"
+  "deutschland": "Germany and Eastern Europe"
+
+  # Iberica region
+  "spain": "Iberica"
+  "spanish": "Iberica"
+  "portugal": "Iberica"
+  "portuguese": "Iberica"
+  "iberia": "Iberica"
+  "iberian": "Iberica"
+  "esp": "Iberica"
+  "prt": "Iberica"
+
+  # Americas/LATAM region
+  "mexico": "Americas"
+  "mexican": "Americas"
+  "brazil": "Americas"
+  "brazilian": "Americas"
+  "usa": "Americas"
+  "united states": "Americas"
+  "america": "Americas"
+  "north america": "Americas"
+  "south america": "Americas"
+  "latam": "Americas"
+  "latin america": "Americas"
+
+  # APAC region
+  "china": "APAC"
+  "chinese": "APAC"
+  "india": "APAC"
+  "indian": "APAC"
+  "asia": "APAC"
+  "asia pacific": "APAC"
+  "pacific": "APAC"
+  "japan": "APAC"
+  "japanese": "APAC"
+  "korea": "APAC"
+  "korean": "APAC"
+  "thailand": "APAC"
+  "vietnam": "APAC"
+
+  # North region
+  "northern": "North"
+  "nordic": "North"
+  "scandinavia": "North"
+
+# Country aliases - user term -> actual database value (ISO codes)
+country_aliases:
+  "germany": "DE"
+  "deutschland": "DE"
+  "german": "DE"
+  "austria": "AT"
+  "osterreich": "AT"
+  "france": "FR"
+  "french": "FR"
+  "italy": "IT"
+  "italian": "IT"
+  "switzerland": "CH"
+  "swiss": "CH"
+  "spain": "ES"
+  "spanish": "ES"
+  "portugal": "PT"
+  "portuguese": "PT"
+  "united kingdom": "GB"
+  "uk": "GB"
+  "british": "GB"
+  "england": "GB"
+  "united states": "US"
+  "usa": "US"
+  "american": "US"
+  "mexico": "MX"
+  "mexican": "MX"
+  "brazil": "BR"
+  "brazilian": "BR"
+  "china": "CN"
+  "chinese": "CN"
+  "india": "IN"
+  "indian": "IN"
+  "japan": "JP"
+  "japanese": "JP"
+
+# Business concept mappings - user phrase -> SQL filter condition
+# These map business terms to actual database filter expressions
+business_concepts:
+  # Supplier classification
+  "motherson": "ABC_INDICATOR = 'G'"
+  "motherson group": "ABC_INDICATOR = 'G'"
+  "motherson supplier": "ABC_INDICATOR = 'G'"
+  "motherson suppliers": "ABC_INDICATOR = 'G'"
+  "group supplier": "ABC_INDICATOR = 'G'"
+  "group suppliers": "ABC_INDICATOR = 'G'"
+  "internal supplier": "ABC_INDICATOR = 'G'"
+  "internal suppliers": "ABC_INDICATOR = 'G'"
+  "captive supplier": "ABC_INDICATOR = 'G'"
+  "in-house": "ABC_INDICATOR = 'G'"
+  "affiliated": "ABC_INDICATOR = 'G'"
+
+  "external supplier": "ABC_INDICATOR != 'G'"
+  "external suppliers": "ABC_INDICATOR != 'G'"
+  "external vendor": "ABC_INDICATOR != 'G'"
+  "third party": "ABC_INDICATOR != 'G'"
+  "third-party": "ABC_INDICATOR != 'G'"
+  "outside supplier": "ABC_INDICATOR != 'G'"
+
+  # Material type
+  "raw material": "MATERIAL_TYPE = 'ROH'"
+  "raw materials": "MATERIAL_TYPE = 'ROH'"
+  "semi-finished": "MATERIAL_TYPE = 'HALB'"
+  "semifinished": "MATERIAL_TYPE = 'HALB'"
+  "finished goods": "MATERIAL_TYPE = 'FERT'"
+  "finished products": "MATERIAL_TYPE = 'FERT'"
+
+  # Incoterm responsibility
+  "buyer responsibility": "\"INCO_TERM\" IN ('EXW', 'FCA', 'FOB')"
+  "buyer-paid": "\"INCO_TERM\" IN ('EXW', 'FCA', 'FOB')"
+  "ex works": "\"INCO_TERM\" = 'EXW'"
+
+  "supplier responsibility": "\"INCO_TERM\" IN ('DAP', 'DDP', 'DDU')"
+  "delivered": "\"INCO_TERM\" IN ('DAP', 'DDP', 'DDU')"
+  "dap": "\"INCO_TERM\" = 'DAP'"
+  "ddp": "\"INCO_TERM\" = 'DDP'"
+
+# Commodity category aliases
+commodity_aliases:
+  "electronics": "Electronics"
+  "electronic components": "Electronics"
+  "electrical": "Electronics"
+  "metals": "Metals"
+  "metal parts": "Metals"
+  "plastics": "Plastics"
+  "plastic parts": "Plastics"
+  "rubber": "Rubber"
+  "rubber parts": "Rubber"
+  "packaging": "Packaging"
+  "logistics": "Logistics"
+  "transport": "Logistics"
+  "services": "Services"
+  "indirect": "Indirect"
+  "direct materials": "Direct"
+  "indirect materials": "Indirect"
+
+# Plant aliases - German names with umlauts
+# Maps ASCII/English spellings to actual database values with umlauts
+plant_aliases:
+  # Bötzingen variants
+  "botzingen": "BÖTZINGEN - BOE"
+  "bötzingen": "BÖTZINGEN - BOE"
+  "boetzingen": "BÖTZINGEN - BOE"
+  "boezningen": "BÖTZINGEN - BOE"
+  
+  # Göttingen variants
+  "gottingen": "GÖTTINGEN - GOE"
+  "göttingen": "GÖTTINGEN - GOE"
+  "goettingen": "GÖTTINGEN - GOE"
+  
+  # Böblingen variants
+  "boeblingen": "MC BÖBLINGEN - BOB"
+  "böblingen": "MC BÖBLINGEN - BOB"
+  "boebligen": "MC BÖBLINGEN - BOB"
+  "boblingen": "MC BÖBLINGEN - BOB"
+  "boblingen - bob": "MC BÖBLINGEN - BOB"
+  "mc boeblingen": "MC BÖBLINGEN - BOB"
+  "mc böblingen": "MC BÖBLINGEN - BOB"
+  
+  # Györ variants (Hungarian with umlaut)
+  "gyor": "MC GYÖR 2 - GY2"
+  "györ": "MC GYÖR 2 - GY2"
+  "gyor 2": "MC GYÖR 2 - GY2"
+  "györ 2": "MC GYÖR 2 - GY2"
+  "mc gyor": "MC GYÖR 2 - GY2"
+  "mc györ": "MC GYÖR 2 - GY2"
+  "mc gyor 2": "MC GYÖR 2 - GY2"
+  "mc györ 2": "MC GYÖR 2 - GY2"

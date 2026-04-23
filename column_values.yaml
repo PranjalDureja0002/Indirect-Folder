@@ -1,0 +1,1859 @@
+table_name: DBO.VW_INDIRECT_SPEND_ALL
+description: Distinct column values for VW_INDIRECT_SPEND_ALL
+column_values:
+  REGION:
+    cardinality: 3
+    examples:
+    - Germany and Eastern Europe
+    - LATAM (Mexico)
+    - North America
+    complete: true
+  PURCHASE_ORG:
+    cardinality: 10
+    examples:
+    - OA04
+    - OA08
+    - OA09
+    - OA10
+    - OA12
+    - OA14
+    - OA15
+    - OA16
+    - OA17
+    - OA18
+    complete: true
+  PLANT_NO:
+    cardinality: 30
+    examples:
+    - '0101'
+    - '0102'
+    - '0105'
+    - '0107'
+    - 0109
+    - '0110'
+    - '0111'
+    - '0137'
+    - '0141'
+    - '0142'
+    - '0143'
+    - '0146'
+    - 0149
+    - '0151'
+    - '0161'
+    - '0163'
+    - '0166'
+    - '0171'
+    - '0447'
+    - '0550'
+    - '0562'
+    - '1053'
+    - '1054'
+    - '1255'
+    - '1257'
+    - '1456'
+    - '1565'
+    - '1668'
+    - '1769'
+    - '1870'
+    complete: true
+  PLANT_NAME:
+    cardinality: 51
+    examples:
+    - AMOZOC - AMO
+    - Bötzingen
+    - BÖTZINGEN - BOE
+    - BRATISLAVA - BRA
+    - Cuprija
+    - CUPRIJA - CUP
+    - Emden
+    - Engineering
+    - ENGINEERING SMP GER - EN1
+    - Göttingen
+    - GÖTTINGEN - GOE
+    - HQ GLOBAL SMP GER - HQ1
+    - HQ REGION GERMANY SMP - HQ2
+    - KECSKEMET - KEC
+    - MC BÖBLINGEN - BOB
+    - MC Bratislava
+    - MC BRATISLAVA - BR1
+    - MC EMDEN - EMD
+    - MC Györ 2
+    - MC Hannover
+    - MC HANNOVER - HAN
+    - MC INGOLSTADT - ING
+    - MC Ingolstadt (Neustadt)
+    - MC LEIPZIG - LE1
+    - MC Leipzig (Neustadt)
+    - MC Leipzig 2
+    - MC LEIPZIG 2 - LE2
+    - MC NECKARSULM - NEC
+    - MC OFFENAU - OFF
+    - MC Offenau (Bötzingen)
+    - MC PETTLING - PET
+    - MC Zwickau
+    - MC ZWICKAU - ZWI
+    - Meerane
+    - MEERANE - MEE
+    - Neustadt
+    - NEUSTADT - NEU
+    - Oldenburg
+    - OLDENBURG - OLD
+    - Plant Kecskemét
+    - Plant Puebla
+    - Plant SMIA Mexico
+    - Plant Tlaxcala
+    - Plant Tuscaloosa
+    - PUEBLA - PUE
+    - Schierling
+    - SCHIERLING - SCH
+    - SMP AE REAL ESTATE - RE2
+    - SMP D REAL ESTATE - RE1
+    - TUSCALOOSA - TUS
+    - ZITLALTEPEC - ZIT
+    complete: true
+  ORDER_NO:
+    cardinality: 96411
+    examples:
+    - '5500212056'
+    - '4501060513'
+    - '4500994672'
+    - '4500997288'
+    - '5500212058'
+    - '4501013465'
+    - '4500991423'
+    - '4501002466'
+    - '4500989807'
+    - '4500974550'
+    - '4501048804'
+    - '4501047482'
+    - '4500993607'
+    - '5500217304'
+    - '4500999289'
+    - '4501002472'
+    - '4500853478'
+    - '4500811473'
+    - '4501033378'
+    - '4501053000'
+    complete: false
+  ORDER_POS_NO:
+    cardinality: 441
+    examples:
+    - '00000'
+    - '00010'
+    - '00020'
+    - '00030'
+    - '00040'
+    - '00050'
+    - '00060'
+    - '00070'
+    - 00080
+    - 00090
+    - '00100'
+    - '00110'
+    - '00120'
+    - '00130'
+    - '00140'
+    - '00150'
+    - '00160'
+    - '00170'
+    - 00180
+    - 00190
+    complete: false
+  SUPPLIER_NO:
+    cardinality: 6061
+    examples:
+    - '33004071'
+    - '33082970'
+    - '33267878'
+    - '33002788'
+    - '33095587'
+    - '33094977'
+    - '33263446'
+    - '33263276'
+    - '33088915'
+    - '33268837'
+    - '33910259'
+    - '33265947'
+    - '33265005'
+    - '33264470'
+    - '33005255'
+    - '33082012'
+    - '33205908'
+    - '33269711'
+    - '33266200'
+    - '33001005'
+    complete: false
+  SUPPLIER_NAME:
+    cardinality: 5841
+    examples:
+    - LUFTHANSA AIR PLUS
+    - TELEKOM DEUTSCHLAND GMBH
+    - DKV EURO SERVICE GMBH + CO. KG
+    - INSA AIR & SEA LOGISTICS GMBH
+    - SCHERBAUER SPEDITION GMBH
+    - VOLKSWAGEN LEASING GMBH
+    - PROO KFT.
+    - SONEPAR DEUTSCHLAND
+    - AUDI MEXICO
+    - FEDEX EXPRESS DEUTSCHLAND GMBH
+    - STREIT SERVICE & SOLUTION
+    - UNITE PROCUREMENT DEUTSCHLAND AG
+    - HOFFMANN QUALITÄTSWERKZEUGE
+    - NOVEM CAR INTERIOR DESIGN INC.
+    - AMAZON FULFILLMENT SERVICES, INC.
+    - B+M SURFACE SYSTEMS GMBH
+    - SONEPAR DEUTSCHLAND REGION SÜD GMBH
+    - RALA GMBH & CO. KG
+    - BGM EXPRESS LOGISTIK GMBH
+    - CORPORATIVO FIA SAN JUAN S.A. DE C.
+    complete: false
+  COUNTRY:
+    cardinality: 6
+    examples:
+    - GER
+    - HUN
+    - MEX
+    - SLO
+    - SRB
+    - USA
+    complete: true
+  SUPP_DUNS_NO:
+    cardinality: 5452
+    examples:
+    - 32-747-4623
+    - '341389328'
+    - '315015487'
+    - '341484817'
+    - '325030591'
+    - 31-587-6904
+    - '366702639'
+    - '588245139'
+    - '325432024'
+    - '315062317'
+    - '320247323'
+    - '315115298'
+    - '320898224'
+    - '932662133'
+    - 079810945
+    - '388084196'
+    - '331500095'
+    - '321159410'
+    - '313537488'
+    - '951732480'
+    complete: false
+  MATERIAL_TYPE:
+    cardinality: 6
+    examples:
+    - DIEN
+    - ERSA
+    - FHMI
+    - HIBE
+    - ZLEI
+    - ZLER
+    complete: true
+  ARTICLE_NO:
+    cardinality: 21525
+    examples:
+    - '90000516'
+    - '90000515'
+    - '210740090010'
+    - '210710090010'
+    - '210710090000'
+    - '210700090000'
+    - '210700090010'
+    - '210740090000'
+    - '210750090010'
+    - '210750090000'
+    - '33021640'
+    - '37785999'
+    - '37544075'
+    - '38103075'
+    - '31800001'
+    - '38299985'
+    - '37777564'
+    - '38190430'
+    - '37792942'
+    - '37800002'
+    complete: false
+  MATERIAL_DESCRIPTION:
+    cardinality: 150852
+    examples:
+    - 00.00.0000
+    - FLETES
+    - Monatspauschale Krauss Maffei Monteur
+    - INSAIR_AE_BMW_OXFORD_24/25
+    - Troskovi carisnkog zastupanja
+    - KRÄHE Stedman Classic T-Shirt
+    - Reparatur Stapler groß E25/E30
+    - 'Transportkosten: Neustadt - Ingolstadt'
+    - Pending GL Approval
+    - Leergut-Transporte
+    - Transportkosten
+    - 'Transportkosten: Letovice - Neustadt'
+    - Pending GL Approval NA
+    - 'Transportkosten: Hamburg - Neustadt'
+    - Stossfänger
+    - GAS LP
+    - Erstellung BMW iX1 NB5 TSV - Proto
+    - Radabdeckung vor
+    - Troskovi koriscenja bankarske garancije
+    - Versandkosten
+    complete: false
+  NET_PRICE:
+    cardinality: 48672
+    examples:
+    - 0.0
+    - 20000.0
+    - 35.0
+    - 7040.0
+    - 37.75
+    - 215258.0
+    - 6.5
+    - 1.0
+    - 390.0
+    - 20.0
+    - 250.0
+    - 200.0
+    - 750.0
+    - 400.0
+    - 600000.0
+    - 50.0
+    - 1500.0
+    - 150.0
+    - 2750.0
+    - 3000.0
+    complete: false
+  PAYMENT_TERM:
+    cardinality: 99
+    examples:
+    - '0000'
+    - '1436'
+    - '1535'
+    - DJ01
+    - DJ02
+    - DJ04
+    - DJ06
+    - DJ07
+    - DJ20
+    - DJ21
+    - DJ33
+    - DJ34
+    - DJ37
+    - DJ43
+    - DJ46
+    - DK00
+    - DK01
+    - DK02
+    - DK04
+    - DK07
+    - DK08
+    - DK09
+    - DK10
+    - DK11
+    - DK12
+    - DK13
+    - DK14
+    - DK15
+    - DK16
+    - DK17
+    - DK18
+    - DK19
+    - DK20
+    - DK22
+    - DK23
+    - DK24
+    - DK25
+    - DK26
+    - DK29
+    - DK30
+    - DK31
+    - DK32
+    - DK33
+    - DK34
+    - DK35
+    - DK37
+    - DK38
+    - DK39
+    - DK41
+    - DK43
+    - DK44
+    - DK45
+    - DK48
+    - DK51
+    - DK53
+    - DK55
+    - DK59
+    - DK60
+    - DK61
+    - DK62
+    - DK65
+    - DK66
+    - DK72
+    - DK73
+    - DK76
+    - DK77
+    - DK82
+    - DK83
+    - DK84
+    - DK85
+    - DK86
+    - DK88
+    - DK89
+    - DK91
+    - DK92
+    - DK97
+    - DK98
+    - E025
+    - ZC02
+    - ZC04
+    - ZC06
+    - ZC08
+    - ZC09
+    - ZC10
+    - ZC12
+    - ZC13
+    - ZC14
+    - ZC18
+    - ZC24
+    - ZC25
+    - ZC30
+    - ZC40
+    - ZC45
+    - ZC77
+    - ZC90
+    - ZC91
+    - ZC92
+    - ZC93
+    - ZC94
+    complete: true
+  PRICE_UNIT:
+    cardinality: 147
+    examples:
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 4.0
+    - 5.0
+    - 6.0
+    - 7.0
+    - 8.0
+    - 9.0
+    - 10.0
+    - 11.0
+    - 12.0
+    - 13.0
+    - 14.0
+    - 15.0
+    - 16.0
+    - 17.0
+    - 18.0
+    - 19.0
+    - 20.0
+    - 21.0
+    - 22.0
+    - 23.0
+    - 24.0
+    - 25.0
+    - 26.0
+    - 27.0
+    - 28.0
+    - 29.0
+    - 30.0
+    - 32.0
+    - 34.0
+    - 35.0
+    - 36.0
+    - 37.0
+    - 40.0
+    - 41.0
+    - 42.0
+    - 44.0
+    - 45.0
+    - 48.0
+    - 49.0
+    - 50.0
+    - 54.0
+    - 55.0
+    - 56.0
+    - 60.0
+    - 64.0
+    - 66.0
+    - 67.0
+    - 70.0
+    - 72.0
+    - 75.0
+    - 80.0
+    - 84.0
+    - 85.0
+    - 90.0
+    - 96.0
+    - 100.0
+    - 106.0
+    - 108.0
+    - 120.0
+    - 130.0
+    - 132.0
+    - 138.0
+    - 140.0
+    - 144.0
+    - 150.0
+    - 156.0
+    - 160.0
+    - 168.0
+    - 175.0
+    - 180.0
+    - 187.0
+    - 192.0
+    - 195.0
+    - 200.0
+    - 202.0
+    - 204.0
+    - 216.0
+    - 225.0
+    - 228.0
+    - 235.0
+    - 240.0
+    - 250.0
+    - 252.0
+    - 254.0
+    - 260.0
+    - 262.0
+    - 264.0
+    - 276.0
+    - 288.0
+    - 290.0
+    - 300.0
+    - 312.0
+    - 327.0
+    - 380.0
+    - 400.0
+    - 420.0
+    - 432.0
+    - 450.0
+    - 480.0
+    - 500.0
+    - 600.0
+    - 700.0
+    - 720.0
+    - 800.0
+    - 840.0
+    - 856.0
+    - 900.0
+    - 935.0
+    - 940.0
+    - 960.0
+    - 1000.0
+    - 1050.0
+    - 1100.0
+    - 1280.0
+    - 1300.0
+    - 1500.0
+    - 1680.0
+    - 1710.0
+    - 1764.0
+    - 1808.0
+    - 1872.0
+    - 1890.0
+    - 2000.0
+    - 2200.0
+    - 2500.0
+    - 3000.0
+    - 3888.0
+    - 4000.0
+    - 4600.0
+    - 5000.0
+    - 6000.0
+    - 6500.0
+    - 7000.0
+    - 7512.0
+    - 8000.0
+    - 8484.0
+    - 8800.0
+    - 10000.0
+    - 13000.0
+    - 15000.0
+    - 20000.0
+    - 72000.0
+    - 90721.0
+    complete: true
+  MEASURE_UNIT:
+    cardinality: 65
+    examples:
+    - BAG
+    - BD
+    - BOT
+    - CAN
+    - CAR
+    - CAS
+    - CL
+    - CRT
+    - CT
+    - D
+    - DAY
+    - DL
+    - DOZ
+    - DRM
+    - EA
+    - FT
+    - FT3
+    - G
+    - GAL
+    - GCN
+    - GLI
+    - GM2
+    - H
+    - HR
+    - HUN
+    - IT
+    - KD3
+    - KG
+    - KM
+    - KMH
+    - KWH
+    - L
+    - LB
+    - LF
+    - M
+    - M/M
+    - M2
+    - M3
+    - MI
+    - MIN
+    - MM
+    - MM2
+    - MON
+    - MWH
+    - 'NO'
+    - P
+    - PAA
+    - PAC
+    - PAL
+    - PCS
+    - PK
+    - PRS
+    - ROL
+    - SA
+    - SU
+    - T
+    - THS
+    - TO
+    - TOM
+    - TON
+    - TS
+    - U
+    - WK
+    - X
+    - YR
+    complete: true
+  INCO_TERM:
+    cardinality: 11
+    examples:
+    - CFR
+    - CIF
+    - CIP
+    - CPT
+    - DAP
+    - DDP
+    - DDU
+    - EXW
+    - FAS
+    - FCA
+    - FOB
+    complete: true
+  Com. Supplier:
+    cardinality: 104
+    examples:
+    - C000
+    - C001
+    - C002
+    - C004
+    - C005
+    - C006
+    - C007
+    - C009
+    - C010
+    - C011
+    - C012
+    - C014
+    - C015
+    - C016
+    - C017
+    - C018
+    - C020
+    - C021
+    - C022
+    - C023
+    - C024
+    - C025
+    - D000
+    - D001
+    - D002
+    - D003
+    - E000
+    - E001
+    - E002
+    - E003
+    - E004
+    - E005
+    - E006
+    - E007
+    - E008
+    - E009
+    - E010
+    - E011
+    - E012
+    - E013
+    - E014
+    - E015
+    - E016
+    - E017
+    - F004
+    - L000
+    - L001
+    - L002
+    - P000
+    - P001
+    - P002
+    - P003
+    - P004
+    - P005
+    - P006
+    - P007
+    - P008
+    - P010
+    - P011
+    - P012
+    - P013
+    - P014
+    - P015
+    - P016
+    - P017
+    - P018
+    - P019
+    - P020
+    - P021
+    - P022
+    - P023
+    - P024
+    - P025
+    - P026
+    - P027
+    - P028
+    - P029
+    - P031
+    - P032
+    - P033
+    - S000
+    - S001
+    - S002
+    - S003
+    - S004
+    - S005
+    - S006
+    - S007
+    - S008
+    - S009
+    - S010
+    - S011
+    - S012
+    - S013
+    - S014
+    - S016
+    - S017
+    - T000
+    - T001
+    - T002
+    - T003
+    - T004
+    - T005
+    - T006
+    complete: true
+  Comm supplier desc.:
+    cardinality: 104
+    examples:
+    - Analysis and inspection services
+    - CAD Design
+    - Calibration Services
+    - CAPEX
+    - Car leasing
+    - Chemicals materials
+    - CHROME PLATED DECORATIVES
+    - Cleaning products
+    - Cleaning Services
+    - Communication (Telecommunication, Internet, other connection
+    - Construction
+    - Construction materials
+    - Consulting and Legal Services (Advice, consulting, placement
+    - Containers / Racks
+    - DECORATIVE
+    - Development and planning service
+    - Education
+    - Electric installations
+    - Electric Materials (lighting sistems, electric drive, transf
+    - ENERGY
+    - Extracting equipment
+    - Extrusion
+    - Facility Management
+    - Factory Equipment (Cabinet, rack, housing, module rack)
+    - Fire protection
+    - FUNCTIONAL ASSEMBLIES
+    - Gas
+    - Hydraulic systems
+    - ILLUMINATION
+    - INSULATION
+    - IT Hardware & Equipments
+    - IT Software
+    - ITA / STF Neuwerkzeuge
+    - Kleben / Klebstoffauftrag
+    - Laboratory Equipment / Measuring Instruments /  Analysis Tec
+    - Laborausrüstung
+    - Lackieranlagen
+    - Laminieren
+    - LOGISTIC SERVICES
+    - Low voltage switchgear and maintenance
+    - Lubricant, coolant, cooling equipment, sealing and adhesives
+    - Machinery Rent
+    - Maintenance Services
+    - Materialgruppe periodischer Service
+    - Materialgruppe Rohstoffe
+    - Messgeräte
+    - METAL PARTS / FASTENERS
+    - MODULES
+    - MOLDING PLASTIC PARTS
+    - Montage
+    - Office equipment / furnitures / Gifts / Literature / Subscri
+    - PACKAGING MATERIALS
+    - PAINTS
+    - Paints and Lacquers
+    - Personal hygiene
+    - Personal Protection Equipment
+    - Personnel leasing
+    - Plumbing services and materials
+    - Pneumatic materials
+    - Prägen
+    - Process air ,  compressed air treatment , air duct component
+    - Prototypenwerkzeuge
+    - Quality Services
+    - Racks / Hangers
+    - Rentals (apartments, warehouse, buildings, etc.)
+    - Reusable Packaging
+    - Roboter und/oder Greifer
+    - Robots - Spare parts and handling technology
+    - Schäumen
+    - Schneiden
+    - Schweißen
+    - Security Services and access control systems
+    - Semi-finished products (other materials)
+    - SENSORS
+    - SERVICES
+    - Signage (Notification sign, mandatory sign, traffic sign)
+    - Sonstige neue Werkzeuge
+    - Spritzgießmaschinen
+    - Stock Technology
+    - Strom
+    - SUBCONTRACTING
+    - Surface treating agent/services
+    - SWITCH
+    - Tempering
+    - Testing, marking and identification means
+    - Thermoformanlagen
+    - Tool shop services (Milling, rotating)
+    - TOOLS & ENGINEERING
+    - Travelling & catering (travelling agency, hotels, restaurant
+    - Warengruppe - sonstige Reisekosten
+    - Warengruppe Aufwendungen
+    - Warengruppe Dienstleistungen
+    - Warengruppe Fahrtkosten
+    - Warengruppe Flugkosten
+    - Warengruppe Handelswaren
+    - Warengruppe Unterbringung
+    - Warengruppe Vertragsart
+    - Wasser
+    - Waste and recycling management
+    - Water treatment
+    - Werkzeugänderungen
+    - WIRE HARNESS
+    - Work safety / Accident prevention
+    - Working and protective clothings
+    complete: true
+  NATION:
+    cardinality: 44
+    examples:
+    - '999'
+    - AE
+    - AT
+    - AU
+    - BE
+    - BG
+    - BR
+    - CA
+    - CH
+    - CN
+    - CZ
+    - DE
+    - DK
+    - ES
+    - FR
+    - GB
+    - GR
+    - HK
+    - HR
+    - HU
+    - IE
+    - IL
+    - IN
+    - IT
+    - JP
+    - KR
+    - LT
+    - LU
+    - LV
+    - MA
+    - MX
+    - NL
+    - 'NO'
+    - PL
+    - PT
+    - RO
+    - RS
+    - SE
+    - SI
+    - SK
+    - TH
+    - TN
+    - TR
+    - US
+    complete: true
+  ACCOUNT_GROUP:
+    cardinality: 6
+    examples:
+    - CPDL
+    - ZDLI
+    - ZDMS
+    - ZDSK
+    - ZDSP
+    - ZDVB
+    complete: true
+  TERMS_OF_PAYMENT_DESCRIPTION:
+    cardinality: 90
+    examples:
+    - 10 days - 1% discount, 30 days net
+    - 10 days - 2% discount, 30 days net
+    - 10 days - 2% discount, 45 days net
+    - 10 days - 3% discount
+    - 10 days - 3% discount, 30 days net
+    - 10 days - 3% discount, 60 days net
+    - 10 days - 3,5 % discount
+    - 10 days - 4% discount, 30 days net
+    - 14 days - 1% discount
+    - 14 days - 1% discount, 30 days net
+    - 14 days - 1,5% discount, 15 days net
+    - 14 days - 2% discount
+    - 14 days - 2% discount, 30 days net
+    - 14 days - 3% discount
+    - 14 days - 3% discount, 30 days net
+    - 14 days - 4 % discount, 60 days net
+    - 14 days - 4% discount, 30 days net
+    - 14 days- 3 % discount, 60 days net
+    - 15 days - 3% discount
+    - 15 days - 3% discount, 30 days - 2% discount, 60 d
+    - 15 days - 3% discount, 60 days net
+    - 15 days- 3 % discount, 45 days net
+    - 20 days - 2 % discount, 30 days net
+    - 21 days 3%, 30 days net
+    - 23 days - 2 % discount, 60 days net
+    - 30 days - 2% discount
+    - 30 days - 3% discount
+    - 30 days - 3% discount, 60 days net
+    - 40 days - 3% discount
+    - 45 days  from 1st day of following month net
+    - 5th day of the next three months
+    - 5th day of the next two months
+    - 65 days net
+    - 75 days net
+    - 8 days - 1% discount
+    - 8 days - 2% discount, 30 days net
+    - 8 days - 2% discount, 60 days net
+    - 8 days - 3% discount, 30 days net
+    - Before End of the next month ;; Due net
+    - Do NOT use!
+    - payable immediately - 2 % discount
+    - payable immediately - 4 % discount
+    - payable immediately without deduction
+    - payable on 30th of the month without deduction
+    - Please do not use
+    - Till the 30th follow. month 2% disc., 90 days net
+    - until 25th in 2 months net
+    - until 25th of the month without deduction
+    - until the 15th of the following month - 3% discoun
+    - until the 15th of the following month without dedu
+    - until the 20th in 2 months without deduction
+    - until the 25th of the following month - 1% discoun
+    - until the 25th of the following month - 2% discoun
+    - until the 25th of the following month -- 3% discou
+    - until the 25th of the following month - 3% discoun
+    - until the 25th of the following month net
+    - until the 2nd in two months without deduction
+    - until the 30th in 2 months without deduction
+    - until the 30th of the following month with 2% disc
+    - until the 30th of the following month with 3% disc
+    - until the 30th of the following month without dedu
+    - up to 15th in 2 months without deduction
+    - up to 30th of fol. month without deduction
+    - within 1 day without deduction
+    - Within 10 days due net
+    - within 10 days without deduction
+    - within 120 days without deduction
+    - within 14 days due net
+    - within 14 days without deduction
+    - within 15 days without deduction
+    - within 180 days without deduction
+    - within 20 days without deduction
+    - within 21 days without deduction
+    - within 240 days due net
+    - Within 25 days Due net
+    - within 25 days without deduction
+    - within 30 days due net
+    - within 30 days without deduction
+    - Within 40 days Due net
+    - within 40 days without deduction
+    - within 45 days due net
+    - within 45 days without deduction
+    - within 5 days without deduction
+    - within 50 days without deduction
+    - Within 60 days without deduction
+    - within 7 days without deduction
+    - Within 77 days due net
+    - within 8 days without deduction
+    - within 90 days due net
+    - within 90 days without deduction
+    complete: true
+  COUNTRY_OF_ORIGIN:
+    cardinality: 11
+    examples:
+    - AT
+    - DE
+    - ES
+    - FR
+    - IE
+    - IT
+    - NL
+    - PL
+    - SE
+    - TW
+    - US
+    complete: true
+  INVOICE_NO:
+    cardinality: 192239
+    examples:
+    - 10051699
+    - 10130236
+    - 6001421
+    - 10212469
+    - 6008250
+    - 6013227
+    - 10205037
+    - 10129725
+    - 10205035
+    - 10138752
+    - 6001516
+    - 10055096
+    - 10090725
+    - 10055231
+    - 10189353
+    - 6001529
+    - 10083175
+    - 6002508
+    - 10192668
+    - 10192733
+    complete: false
+  INVOICE_POS_NO:
+    cardinality: 951
+    examples:
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    complete: false
+  INVOICE_DATE:
+    cardinality: 667
+    examples:
+    - '2024-05-27 00:00:00'
+    - '2024-12-03 00:00:00'
+    - '2025-02-24 00:00:00'
+    - '2025-09-03 00:00:00'
+    - '2024-11-06 00:00:00'
+    - '2025-12-29 00:00:00'
+    - '2025-02-18 00:00:00'
+    - '2024-11-05 00:00:00'
+    - '2024-06-27 00:00:00'
+    - '2025-08-18 00:00:00'
+    - '2024-12-30 00:00:00'
+    - '2024-06-28 00:00:00'
+    - '2025-07-31 00:00:00'
+    - '2025-03-31 00:00:00'
+    - '2024-09-17 00:00:00'
+    - '2025-11-25 00:00:00'
+    - '2024-07-24 00:00:00'
+    - '2025-09-16 00:00:00'
+    - '2025-06-30 00:00:00'
+    - '2024-07-01 00:00:00'
+    complete: false
+  QUANTITY:
+    cardinality: 10198
+    examples:
+    - 0.0
+    - 1.0
+    - 2.0
+    - 3.0
+    - 10.0
+    - 5.0
+    - 4.0
+    - 0.001
+    - 20.0
+    - 6.0
+    - -1.0
+    - 100.0
+    - 50.0
+    - 0.5
+    - 8.0
+    - 12.0
+    - 30.0
+    - 0.002
+    - 0.003
+    - 0.004
+    complete: false
+  AMOUNT:
+    cardinality: 169791
+    examples:
+    - 15.0
+    - 0.01
+    - 35.0
+    - 2.0
+    - 15.25
+    - 3.5
+    - 26.45
+    - 22.25
+    - 12.3
+    - 85.0
+    - -0.01
+    - 65.0
+    - 20.95
+    - 19.3
+    - 18.0
+    - -327.2
+    - 358.579942
+    - 23.5
+    - 36.418275
+    - 0.84
+    complete: false
+  INVOICE_AMOUNT_CURRENCY_LOCAL:
+    cardinality: 4
+    examples:
+    - EUR
+    - MXN
+    - RSD
+    - USD
+    complete: true
+  MATERIAL_GROUP:
+    cardinality: 386
+    examples:
+    - P000
+    - L000
+    - P028
+    - P003
+    - S000
+    - S001
+    - P024
+    - L001
+    - P001
+    - S006
+    - S016
+    - D002
+    - C000
+    - P012
+    - P023
+    - T002
+    - C005
+    - P002
+    - S007
+    - P008
+    complete: false
+  COMMODITY:
+    cardinality: 51
+    examples:
+    - '0000'
+    - '0001'
+    - '0002'
+    - '0003'
+    - '0004'
+    - '0005'
+    - '0006'
+    - 0008
+    - '0010'
+    - '0011'
+    - '0013'
+    - '0015'
+    - '0016'
+    - '0017'
+    - 0018
+    - 0019
+    - '0020'
+    - '0021'
+    - '0022'
+    - '0023'
+    - '0024'
+    - '0025'
+    - '0026'
+    - '0027'
+    - 0028
+    - '0030'
+    - C000
+    - D000
+    - E000
+    - E001
+    - E002
+    - E003
+    - E004
+    - E005
+    - E006
+    - E007
+    - E008
+    - E009
+    - E010
+    - E011
+    - E012
+    - E013
+    - E014
+    - E015
+    - E016
+    - E017
+    - F000
+    - L000
+    - P000
+    - S000
+    - T000
+    complete: true
+  COMMODITY_DESCRIPTION:
+    cardinality: 45
+    examples:
+    - Artificial Skins, Se
+    - Audio Visual / Multi
+    - CALIBRATION
+    - Capex
+    - CAR LEASING/RENTAL
+    - CHECKING FIXTURES
+    - Chrome Plated Decora
+    - CONSULTANTS
+    - Decorative
+    - EDUCATION
+    - ELECTRIC
+    - Energy
+    - ENGINEERING SERVICES
+    - Functional Assemblie
+    - Illumination
+    - Insulation
+    - IT
+    - Leather
+    - Metal Parts / Fasten
+    - METAL/FASTENERS
+    - MOBILE COMMUNICATIONS
+    - Modules
+    - Molding Plastic Part
+    - not classified articles
+    - Packaging Materials
+    - PAINT
+    - Paints
+    - PERSONNEL LEASING
+    - Plant Purchasing
+    - PLASTIC PARTS
+    - Q-SERVICES
+    - RAW MATERIAL
+    - Resins
+    - Semifinish or Finish
+    - Sensors
+    - SERVICE
+    - Services
+    - Subcontracting
+    - Switch
+    - TOOLS
+    - Tools & Engineering
+    - TOOLS/ CHECKING FIXTURES DIR. MAT.
+    - Transport / Logistic
+    - TRAVELLING
+    - Wire Harness
+    complete: true
+  PURCHASING_AGENT_NO:
+    cardinality: 133
+    examples:
+    - C01
+    - D15
+    - D49
+    - M42
+    - M53
+    - P01
+    - P02
+    - P04
+    - P05
+    - P06
+    - P07
+    - P09
+    - P10
+    - P11
+    - P12
+    - P13
+    - P14
+    - P15
+    - P16
+    - P17
+    - P18
+    - P19
+    - P20
+    - P21
+    - P22
+    - P23
+    - P24
+    - P25
+    - P26
+    - P27
+    - P28
+    - P29
+    - P30
+    - P31
+    - P32
+    - P33
+    - P34
+    - P36
+    - P37
+    - P38
+    - P39
+    - P41
+    - P42
+    - P43
+    - P44
+    - P45
+    - P46
+    - P49
+    - P50
+    - P51
+    - P52
+    - P53
+    - P54
+    - P55
+    - P56
+    - P57
+    - P58
+    - P59
+    - P60
+    - P61
+    - P63
+    - P64
+    - P66
+    - P67
+    - P68
+    - P69
+    - P70
+    - P71
+    - P72
+    - P73
+    - P75
+    - P76
+    - P77
+    - P78
+    - P79
+    - P80
+    - P81
+    - P83
+    - P84
+    - P88
+    - P89
+    - P90
+    - P92
+    - P93
+    - P94
+    - P95
+    - P96
+    - P99
+    - PA1
+    - PA2
+    - PA4
+    - PA5
+    - PA7
+    - PA9
+    - PB0
+    - PB1
+    - PB2
+    - PB3
+    - PB4
+    - PB5
+    - PB6
+    - PB7
+    - PB8
+    - PB9
+    - PE1
+    - PK1
+    - PK2
+    - PK3
+    - PK4
+    - PK5
+    - PK7
+    - PK8
+    - PK9
+    - PM0
+    - PM1
+    - PM2
+    - PM3
+    - PM5
+    - PM6
+    - PM7
+    - PM9
+    - PS1
+    - PS2
+    - PS3
+    - PS4
+    - PU1
+    - PU2
+    - PU3
+    - PU4
+    - PU5
+    - PU6
+    - PU7
+    - PU8
+    complete: true
+  PURCHASING_AGENT_NAME:
+    cardinality: 109
+    examples:
+    - A. Papadopoulou
+    - Abril Feregrino
+    - Achim Fricker
+    - Agnes Nagy
+    - Albert Jäntschi
+    - André Hoffmann
+    - André Obholz
+    - Andreas Franzen
+    - Andreas Kienzle
+    - Andreas Rehm
+    - Andreas Somik
+    - Arnold Jaszai
+    - Augusta Sterling
+    - Berit Liebl
+    - Bernadett Batori
+    - Blocked-S4Americas
+    - Brandy Bobo
+    - Carolina Saldivar
+    - Christian Foethke
+    - Christian Köhler
+    - Christine Gammel
+    - Claudia Köhler
+    - Claus Cremer
+    - Commerzleasing
+    - David Ladanyi
+    - Denis Seifert
+    - Dominic Kirkland
+    - Dragana Paunovic
+    - Emrah Tuerkdogan
+    - Fabian Kluge
+    - Fethi Lahmar
+    - Franciska Polyák
+    - Fredericka Gaines
+    - Gaelle Utard
+    - Giovanni Zepeda
+    - Glenn Moore
+    - Gukhoe Heo
+    - Gyöngyi Deczki
+    - Hagen Elsner
+    - Harald Metzger
+    - Harumi Yamada
+    - Hemalatha S. Kumar
+    - Hermann Walz
+    - Hr. H. Fischer
+    - Hr. Plessow
+    - Iris Lopez
+    - Istvan Piranszki
+    - IT GER/EE
+    - Jahresbest.Götting
+    - Jahresbest.Logisti
+    - Jahresbest.Meerane
+    - Jahresbest.Oldenbu
+    - Jens Gelfert
+    - Jessica Palmer
+    - Jürgen Ertelt
+    - Jürgen Reim
+    - Kassinda Usher
+    - Kevin Backert
+    - Kevin Kraut
+    - Klaus Gresslin
+    - Klaus Peter Kosek
+    - Lena Breden
+    - Magazin BOE
+    - Magazin Meerane
+    - Magazine Kecskemét
+    - Magdalena Strzeszy
+    - Maja Simovic
+    - Manuel Mayer
+    - Marcel Ruf
+    - Marcelo Bendazzoli
+    - Marion Wernet
+    - Martha Teutli
+    - Maxim Latyshev
+    - Michael Landoll
+    - Michaela Repper
+    - Milan Mijatovic
+    - Milos Nedeljkovic
+    - Miso Stojic
+    - Mobilfunk
+    - Niklas Dick
+    - Noemi Marton
+    - R. von Stünzner
+    - Rainer Dietzel
+    - Richard Schönauer
+    - Rita Bauer
+    - Robert Schmieg
+    - Ruby Clara Arokiar
+    - Sandra Fischer
+    - Sathya Damodaran
+    - Sonja Litwin
+    - Stefan Kast
+    - Sven Hartmann
+    - Tamas Safrany
+    - Thomas Fuchs
+    - Thomas Imlau
+    - Thomas Kortyka
+    - Thomas Maurer
+    - Thomas Schmauser
+    - Thomas Steinle
+    - Tobias Brumloop
+    - Tobias Rackisch
+    - Tomas Elis
+    - Torsten Spickmann
+    - unassigned
+    - Unbelegt
+    - UNKOWN
+    - Werkseinkauf
+    - Werkseinkauf Meera
+    - Werner Peter
+    complete: true
+  VOUCHER_AMOUNT:
+    cardinality: 136010
+    examples:
+    - 15.0
+    - 0.01
+    - 35.0
+    - 2.0
+    - 15.25
+    - 0.0
+    - 3.5
+    - 26.45
+    - 22.25
+    - -0.01
+    - 85.0
+    - 12.3
+    - 65.0
+    - 20.95
+    - 19.3
+    - 18.0
+    - -327.2
+    - 7040.0
+    - 23.5
+    - 715.0
+    complete: false
+  INVOICE_AMOUNT_CURRENCY:
+    cardinality: 11
+    examples:
+    - CHF
+    - CNY
+    - CZK
+    - EUR
+    - GBP
+    - HUF
+    - JPY
+    - MXN
+    - PLN
+    - RSD
+    - USD
+    complete: true
+  VOUCHER_NETPRICE_CURRENCY:
+    cardinality: 11
+    examples:
+    - CHF
+    - CNY
+    - CZK
+    - EUR
+    - GBP
+    - HUF
+    - JPY
+    - MXN
+    - PLN
+    - RSD
+    - USD
+    complete: true
+  EXCH_RATE:
+    cardinality: 7
+    examples:
+    - 1.0
+    - 1.0467
+    - 1.0939
+    - 19.633
+    - 22.1594
+    - 118.3248
+    - 118.893
+    complete: true
+  PO_QUANTITY:
+    cardinality: 1667
+    examples:
+    - '0'
+    - '1'
+    - '2'
+    - '12'
+    - '5'
+    - '4'
+    - '10'
+    - '3'
+    - '20'
+    - '6'
+    - '48'
+    - '9'
+    - '100'
+    - '50'
+    - '30'
+    - '8'
+    - '44'
+    - '200'
+    - '15'
+    - '60'
+    complete: false
+  RECORD_TYPE:
+    cardinality: 2
+    examples:
+    - A
+    - M
+    complete: true
+  MAIN_ACCOUNT:
+    cardinality: 303
+    examples:
+    - '0000200200'
+    - '0000624210'
+    - 0000629500
+    - '0000600211'
+    - 0000629030
+    - 0000629060
+    - '0000130210'
+    - '0000600400'
+    - '0000622012'
+    - '0000621020'
+    - '0000600004'
+    - '0000130200'
+    - '0000600231'
+    - '0000624400'
+    - '0000621210'
+    - '0000621220'
+    - 0000623180
+    - 0000600910
+    - 0000559030
+    - '0000624100'
+    complete: false
+  ABC_INDICATOR:
+    cardinality: 3
+    examples:
+    - G
+    - O
+    - S
+    complete: true
+  PARENT_DUNS:
+    cardinality: 2306
+    examples:
+    - '327376653'
+    - '329755193'
+    - '275940476'
+    - '316800853'
+    - '483367074'
+    - '650106917'
+    - '315016295'
+    - 003141970
+    - '332272850'
+    - '342356686'
+    - '218129829'
+    - '884745530'
+    - '344172338'
+    - '545192903'
+    - '282412709'
+    - '313537488'
+    - '327807152'
+    - '312552827'
+    - '344612192'
+    - '316750579'
+    complete: false
+  PARENT_SUPPLIER_NAME:
+    cardinality: 2305
+    examples:
+    - Deutsche Telekom AG
+    - Dr. Fischer KG
+    - SOCIETE DE NEGOCE ET DE PARTICIPATION
+    - InsaTransport Speditions GmbH
+    - SFS Group AG
+    - SAMVARDHANA MOTHERSON INTERNATIONAL LIMITED
+    - VOLKSWAGEN AKTIENGESELLSCHAFT
+    - FedEx Corporation
+    - Unite Holding SE
+    - Streit Solution Holding GmbH & Co. KG
+    - ROKOKO AUTOMOTIVE HOLDINGS (JERSEY) LIMITED
+    - Amazon.com, Inc.
+    - bm Holding GmbH & Co. KG
+    - Sinochem Equipment Technology (Qingdao) Company Limited
+    - DESCOURS ET CABAUD SA
+    - bgm express logistik GmbH
+    - Festo Beteiligungen GmbH & Co. KG
+    - KION GROUP AG
+    - LJH-Holding GmbH
+    - Beutlhauser Holding GmbH
+    complete: false
+  PROPOSED_CATEGORY:
+    cardinality: 3
+    examples:
+    - HCC
+    - LCC
+    - MCC
+    complete: true
+  L0_FILTER:
+    cardinality: 4
+    examples:
+    - Capex
+    - Direct
+    - Indirect
+    - Tooling
+    complete: true
+  MEASURE_UNIT_DESCRIPTION:
+    cardinality: 64
+    examples:
+    - '% Air humidity'
+    - Bag
+    - Barrel
+    - Bottle
+    - Canister
+    - Carton
+    - Case
+    - centiliter
+    - Crate
+    - Cubic foot
+    - Cubic meter
+    - Days
+    - Dozen
+    - Drum
+    - each
+    - Foot
+    - Gram
+    - Gram/liter
+    - Gram/square meter
+    - Hour
+    - Hours
+    - items
+    - Kilogram
+    - Kilogram/cubic decimeter
+    - Kilometer/hour
+    - Kilowatt hours
+    - Liter
+    - Megawatt hours
+    - Meter
+    - Meter/Minute
+    - Mile
+    - Miles/Kms
+    - Millimeter
+    - Minute
+    - Months
+    - No Unit of Quantity
+    - Number
+    - Number of persons
+    - Pack
+    - Pair
+    - Pallet
+    - Pieces
+    - Points
+    - Role
+    - Service
+    - Service unit
+    - Set
+    - Square meter
+    - Square millimeter
+    - Thousand
+    - Ton/Cubic meter
+    - Tonnes
+    - Unit
+    - US gallon
+    - US gross containers
+    - US hundreds
+    - US Metric Tons
+    - US pack
+    - US pound
+    - US thousand
+    - US ton
+    - Voltampere
+    - Weeks
+    - Years
+    complete: true
+  _migration_batch:
+    cardinality: 22
+    examples:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 19
+    - 20
+    - 21
+    complete: true
+  _migrated_at:
+    cardinality: 1826
+    examples:
+    - '2026-04-16 06:22:05'
+    - '2026-04-16 06:21:41'
+    - '2026-04-16 06:21:49'
+    - '2026-04-16 06:24:04'
+    - '2026-04-16 06:17:42'
+    - '2026-04-16 06:22:42'
+    - '2026-04-16 06:19:55'
+    - '2026-04-16 06:22:31'
+    - '2026-04-16 06:20:26'
+    - '2026-04-16 06:22:53'
+    - '2026-04-16 06:20:00'
+    - '2026-04-16 06:20:18'
+    - '2026-04-16 06:22:16'
+    - '2026-04-16 06:18:26'
+    - '2026-04-16 06:23:48'
+    - '2026-04-16 06:18:04'
+    - '2026-04-16 06:21:16'
+    - '2026-04-16 06:13:25'
+    - '2026-04-16 06:19:30'
+    - '2026-04-16 06:18:48'
+    complete: false

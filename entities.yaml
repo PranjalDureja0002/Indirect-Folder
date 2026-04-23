@@ -1,0 +1,222 @@
+# Entity definitions for NL2SQL
+# Maps domain concepts to database columns
+
+entities:
+  Supplier:
+    description: "Entity providing goods/services"
+    columns:
+      identifier: SUPPLIER_NO
+      name: SUPPLIER_NAME
+      parent: PARENT_SUPPLIER_NAME
+      commodity_code: "Com. Supplier"
+      commodity_desc: "Comm supplier desc."
+    primary_key: SUPPLIER_NO
+    display_column: SUPPLIER_NAME
+    synonyms:
+      - vendor
+      - seller
+      - provider
+      - manufacturer
+    usage_rules:
+      - "When grouping by supplier, use SUPPLIER_NAME for readability"
+      - "When counting suppliers, use COUNT(DISTINCT SUPPLIER_NO)"
+      - "Use Parent Supplier for consolidated/group-level analysis"
+      - "SUPPLIER_NO is the unique identifier for joins"
+
+  Plant:
+    description: "Manufacturing facility or production site"
+    columns:
+      identifier: PLANT_NO
+      name: PLANT_NAME
+      main_no: PLANT_NO
+      main_name: PLANT_NAME
+    primary_key: PLANT_NO
+    display_column: PLANT_NAME
+    synonyms:
+      - factory
+      - facility
+      - site
+      - location
+      - production facility
+    usage_rules:
+      - "When grouping by plant, use PLANT_NAME for readability"
+      - "When counting plants, use COUNT(DISTINCT PLANT_NO)"
+      - "Use Main Plant for consolidated plant-level analysis"
+
+  Commodity:
+    description: "Product category classification"
+    columns:
+      code: COMMODITY
+      description: COMMODITY_DESCRIPTION
+      material_group: MATERIAL_GROUP
+    primary_key: COMMODITY
+    display_column: COMMODITY_DESCRIPTION
+    hierarchy:
+      - COMMODITY
+      - MATERIAL_GROUP
+      - ARTICLE_NO
+    synonyms:
+      - category
+      - spend category
+      - product category
+    usage_rules:
+      - "COMMODITY is the highest level category"
+      - "MATERIAL_GROUP is sub-category within COMMODITY (indirect-only, replaces KSS from direct)"
+      - "Use COMMODITY_DESCRIPTION for readable output"
+
+  Transaction:
+    description: "Individual procurement transaction"
+    columns:
+      amount: AMOUNT
+      price: NET_PRICE
+      invoice_no: INVOICE_NO
+      invoice_pos_no: INVOICE_POS_NO
+      invoice_date: INVOICE_DATE
+      quantity: QUANTITY
+      order_no: ORDER_NO
+    primary_key: INVOICE_NO
+    display_column: INVOICE_NO
+    synonyms:
+      - purchase
+      - order
+      - invoice
+      - spend
+      - price
+    usage_rules:
+      - "AMOUNT is the spend/amount metric (use SUM for totals)"
+      - "NET_PRICE is the price metric if the query spcifies price (use SUM for totals)"
+      - "QUANTITY for volume-based analysis"
+      - "INVOICE_DATE for time-based filtering"
+
+  Time:
+    description: "Temporal dimension for analysis"
+    columns:
+      invoice_date: INVOICE_DATE
+    primary_key: INVOICE_DATE
+    display_column: INVOICE_DATE
+    synonyms:
+      - date
+      - period
+      - year
+    usage_rules:
+      - "INVOICE_DATE for date-level granularity"
+      - "Use YEAR(INVOICE_DATE) for year-based analysis"
+      - "Use FORMAT(INVOICE_DATE, 'yyyy') for year grouping"
+
+  Geography:
+    description: "Geographic location dimension"
+    columns:
+      region: REGION
+      country: COUNTRY
+    primary_key: COUNTRY
+    display_column: REGION
+    synonyms:
+      - location
+      - area
+      - territory
+    usage_rules:
+      - "REGION is the business region grouping"
+      - "COUNTRY is ISO country code"
+
+  Buyer:
+    description: "Purchasing agent or procurement team"
+    columns:
+      name: PURCHASING_AGENT_NAME
+      org: PURCHASE_ORG
+    primary_key: PURCHASING_AGENT_NAME
+    display_column: PURCHASING_AGENT_NAME
+    synonyms:
+      - purchaser
+      - purchasing agent
+      - procurement officer
+    usage_rules:
+      - "PURCHASING_AGENT_NAME for buyer-level analysis"
+      - "PURCHASE_ORG for purchasing organization aggregation"
+
+  Currency:
+    description: "Currency information"
+    columns:
+      document_currency: INVOICE_AMOUNT_CURRENCY
+      local_currency: INVOICE_AMOUNT_CURRENCY_LOCAL
+      net_price_currency: VOUCHER_NETPRICE_CURRENCY
+      exchange_rate: EXCH_RATE
+    primary_key: INVOICE_AMOUNT_CURRENCY
+    display_column: INVOICE_AMOUNT_CURRENCY
+    synonyms:
+      - money
+      - currency code
+    usage_rules:
+      - "AMOUNT is in EUR (budget currency)"
+      - "INVOICE_AMOUNT_CURRENCY is the document/transaction currency"
+      - "INVOICE_AMOUNT_CURRENCY_LOCAL is the local currency on the invoice"
+      - "EXCH_RATE is the conversion rate used"
+
+  Article:
+    description: "Material or part item"
+    columns:
+      number: ARTICLE_NO
+      description: MATERIAL_DESCRIPTION
+      type: MATERIAL_TYPE
+    primary_key: ARTICLE_NO
+    display_column: MATERIAL_DESCRIPTION
+    synonyms:
+      - part
+      - material
+      - item
+      - component
+      - product
+    usage_rules:
+      - "ARTICLE_NO is unique part identifier"
+      - "MATERIAL_DESCRIPTION for readable part names"
+      - "MATERIAL_TYPE for SAP material classification"
+
+# Entity relationships for JOIN understanding
+relationships:
+  supplier_supplies_plant:
+    from_entity: Supplier
+    to_entity: Plant
+    description: "Suppliers provide materials to plants"
+    link_type: many_to_many
+    in_view: true  # Already joined in DBO.VW_INDIRECT_SPEND_ALL
+
+  transaction_from_supplier:
+    from_entity: Transaction
+    to_entity: Supplier
+    description: "Transactions originate from suppliers"
+    link_columns:
+      - SUPPLIER_NO
+    link_type: many_to_one
+
+  transaction_to_plant:
+    from_entity: Transaction
+    to_entity: Plant
+    description: "Transactions are received at plants"
+    link_columns:
+      - PLANT_NO
+    link_type: many_to_one
+
+  commodity_contains_article:
+    from_entity: Commodity
+    to_entity: Article
+    description: "Commodities contain articles"
+    link_columns:
+      - COMMODITY
+    link_type: one_to_many
+    hierarchy: true
+
+  plant_in_geography:
+    from_entity: Plant
+    to_entity: Geography
+    description: "Plants are located in geographic regions"
+    link_columns:
+      - REGION
+      - COUNTRY
+    link_type: many_to_one
+
+  buyer_manages_transaction:
+    from_entity: Buyer
+    to_entity: Transaction
+    description: "Buyers manage procurement transactions"
+    link_columns:
+      - PURCHASING_AGENT_NAME
+    link_type: one_to_many

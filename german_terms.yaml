@@ -1,0 +1,77 @@
+# German/SAP term mappings for NL2SQL
+# Maps German and SAP-specific column names to English equivalents
+
+german_columns: {}
+
+# SAP-specific terms
+sap_terms:
+  MATERIAL_TYPE:
+    sap_code: "MTART"
+    description: "SAP Material Type"
+    common_values:
+      ROH: "Raw Material"
+      HALB: "Semi-Finished Product"
+      FERT: "Finished Product"
+      HIBE: "Operating Supplies"
+
+  PLANT_NO:
+    sap_code: "WERKS"
+    description: "SAP Plant Code"
+    notes: "4-character plant identifier"
+
+  SUPPLIER_NO:
+    sap_code: "LIFNR"
+    description: "SAP Vendor Number"
+    notes: "10-character vendor identifier"
+
+  COMMODITY:
+    sap_code: "MATKL"
+    description: "Material Group (high level)"
+    notes: "Commodity classification"
+
+  MATERIAL_GROUP:
+    sap_code: "MATKL"
+    description: "Material Group (detail level)"
+    notes: "Sub-category of commodity (indirect-only; replaces KSS from direct)"
+
+  INVOICE_DATE:
+    sap_code: "BUDAT"
+    description: "Posting Date"
+    notes: "Invoice/document posting date"
+
+# Industry-specific terms (automotive) - glossary only, not linked to columns
+automotive_terms:
+  Tier1:
+    description: "First-tier supplier to OEM"
+    notes: "Motherson is a Tier-1 supplier"
+
+  Tier2:
+    description: "Supplier to Tier-1 companies"
+    notes: "Second level in supply chain"
+
+# Translation lookup (for bidirectional mapping)
+translations:
+  # German to English
+  land: "country"
+  lieferant: "supplier"
+  werk: "plant"
+  menge: "quantity"
+  betrag: "amount"
+  waehrung: "currency"
+  datum: "date"
+
+  # English to German (for completeness)
+  country: "Land"
+  supplier: "Lieferant"
+  plant: "Werk"
+  quantity: "Menge"
+  amount: "Betrag"
+  currency: "Währung"
+  date: "Datum"
+
+# Column name explanations (cryptic names decoded)
+column_explanations:
+  Com_Supplier: "Commodity code assigned to supplier"
+  Com_Desr_Supp: "Commodity description for supplier categorization"
+  INVOICE_AMOUNT_CURRENCY: "Document/transaction currency code on the invoice"
+  EXCH_RATE: "Exchange rate used for currency conversion"

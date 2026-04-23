@@ -1,0 +1,506 @@
+# Synonym dictionary for NL2SQL
+# Maps natural language terms to canonical database terms
+
+# Column synonyms - map user terms to actual column names
+columns:
+  AMOUNT:
+    synonyms:
+      - spend
+      - expenditure
+      - cost
+      - expense
+      - payment
+      - outlay
+      - money spent
+      - procurement cost
+      - spending
+      - value
+      - eur amount
+      - euro amount
+    description: "Primary spend column in EUR (budget currency) - use SUM(AMOUNT) for totals"
+  
+  NET_PRICE:
+    synonyms:
+      - price
+      - Price
+      - Negotiated Price
+      - Org Price
+      - Org negotiated Price
+      - net price
+      - total price
+      - price value
+      - negotiated price
+    description: "Price column in EUR (budget currency) - use SUM(NET_PRICE) for totals - check for access in request access table for user access"
+
+  SUPPLIER_NAME:
+    synonyms:
+      - supplier
+      - vendor
+      - seller
+      - provider
+      - manufacturer
+      - company name
+      - vendor name
+      - supplier name
+    description: "Supplier display name"
+
+  SUPPLIER_NO:
+    synonyms:
+      - supplier id
+      - vendor id
+      - supplier number
+      - vendor number
+      - supplier code
+      - vendor code
+    description: "Unique supplier identifier"
+
+  REGION:
+    synonyms:
+      - region
+      - geographic region
+      - area
+      - territory
+      - zone
+      - business region
+    description: "Geographic business region"
+
+  COUNTRY:
+    synonyms:
+      - country
+      - nation
+      - country code
+      - country name
+    description: "Country ISO code"
+
+  PLANT_NAME:
+    synonyms:
+      - plant
+      - factory
+      - facility
+      - manufacturing plant
+      - production facility
+      - site
+      - location
+      - plant name
+    description: "Plant display name"
+
+  PLANT_NO:
+    synonyms:
+      - plant id
+      - plant number
+      - plant code
+      - factory id
+      - site code
+      - factory code
+    description: "Unique plant identifier"
+
+  COMMODITY:
+    synonyms:
+      - commodity
+      - category
+      - spend category
+      - procurement category
+      - product category
+      - commodity code
+      - material commodity
+    description: "High-level commodity code"
+
+  COMMODITY_DESCRIPTION:
+    synonyms:
+      - commodity name
+      - category name
+      - commodity description
+      - category description
+    description: "Commodity category description"
+
+  MATERIAL_TYPE:
+    synonyms:
+      - material type
+      - mat type
+    description: "SAP material type code (ROH, HALB, FERT, HIBE)"
+
+  INVOICE_DATE:
+    synonyms:
+      - date
+      - invoice date
+      - transaction date
+      - purchase date
+      - billing date
+      - posting date
+      - year
+      - fiscal year
+      - financial year
+      - fy
+    description: "Invoice issue date - use for time-based filtering"
+
+  QUANTITY:
+    synonyms:
+      - quantity
+      - qty
+      - units
+      - pieces
+      - volume
+      - count
+      - number of items
+      - amount ordered
+    description: "Transaction quantity"
+
+  PURCHASING_AGENT_NAME:
+    synonyms:
+      - buyer
+      - purchaser
+      - purchasing agent
+      - procurement officer
+      - buyer name
+      - purchasing manager
+    description: "Name of purchasing agent"
+
+  MATERIAL_DESCRIPTION:
+    synonyms:
+      - part
+      - article
+      - product
+      - item
+      - material
+      - component
+      - part description
+      - item description
+    description: "Article/part description"
+
+  ARTICLE_NO:
+    synonyms:
+      - part number
+      - article number
+      - item number
+      - material number
+      - sku
+      - part id
+    description: "Article/part identifier"
+
+  INVOICE_NO:
+    synonyms:
+      - invoice number
+      - invoice id
+      - bill number
+      - invoice
+      - bill
+      - receipt
+      - accounting document
+      - document number
+    description: "Accounting Document Number / Invoice identifier"
+
+  INVOICE_AMOUNT_CURRENCY:
+    synonyms:
+      - currency
+      - currency code
+      - transaction currency
+      - document currency
+      - invoice currency
+    description: "Transaction/document currency code on the invoice"
+
+  INVOICE_AMOUNT_CURRENCY_LOCAL:
+    synonyms:
+      - local currency
+      - local currency code
+    description: "Local currency on the invoice"
+
+  PARENT_SUPPLIER_NAME:
+    synonyms:
+      - parent supplier
+      - parent vendor
+      - holding company
+      - parent company
+      - supplier group
+    description: "Parent company of supplier"
+
+  ORDER_NO:
+    synonyms:
+      - purchase order
+      - po
+      - po number
+      - order number
+      - order
+      - purchase order number
+    description: "Purchase Order Number"
+
+  MAIN_ACCOUNT:
+    synonyms:
+      - gl account
+      - g/l account
+      - general ledger
+      - ledger account
+      - account number
+      - main account
+      - expense account
+    description: "General Ledger (G/L) Account Number"
+
+  INCO_TERM:
+    synonyms:
+      - incoterms
+      - incoterm
+      - delivery terms
+      - shipping terms
+      - trade terms
+    description: "International commercial terms (DDP, FOB, CIF, EXW)"
+  
+  ## ADDED NEW
+  MATERIAL_GROUP:
+    synonyms:
+      - material group
+      - material category
+      - material classification
+      - indirect category
+    description: "Material group code in indirect spend view (equivalent to KSS in direct)"
+
+  PURCHASE_ORG:
+    synonyms:
+      - purchasing organization
+      - purchase org
+      - buying org
+      - procurement org
+    description: "SAP purchasing organization"
+
+  PAYMENT_TERM:
+    synonyms:
+      - payment term
+      - payment terms
+      - pay term
+    description: "Payment terms code (indirect view)"
+
+  VOUCHER_AMOUNT:
+    synonyms:
+      - voucher amount
+      - voucher value
+      - invoice voucher
+    description: "Voucher/invoice amount"
+
+# Aggregation function synonyms
+aggregations:
+  SUM:
+    synonyms:
+      - total
+      - sum
+      - aggregate
+      - combined
+      - overall
+      - all
+      - entire
+      - cumulative
+    description: "Sum aggregation"
+
+  COUNT:
+    synonyms:
+      - count
+      - number of
+      - how many
+      - quantity of
+      - tally
+    description: "Count aggregation"
+
+  AVG:
+    synonyms:
+      - average
+      - avg
+      - mean
+      - typical
+      - per unit
+    description: "Average aggregation"
+
+  MAX:
+    synonyms:
+      - maximum
+      - max
+      - highest
+      - largest
+      - biggest
+      - top
+      - most
+      - greatest
+    description: "Maximum value"
+
+  MIN:
+    synonyms:
+      - minimum
+      - min
+      - lowest
+      - smallest
+      - least
+      - bottom
+      - fewest
+    description: "Minimum value"
+
+  COUNT_DISTINCT:
+    synonyms:
+      - unique
+      - distinct
+      - different
+      - unique count
+      - number of unique
+      - number of distinct
+    description: "Count distinct values"
+
+# Question pattern synonyms
+patterns:
+  top_n:
+    synonyms:
+      - top
+      - highest
+      - largest
+      - biggest
+      - most
+      - leading
+      - best
+    intent: "ORDER BY DESC with LIMIT"
+
+  bottom_n:
+    synonyms:
+      - bottom
+      - lowest
+      - smallest
+      - least
+      - worst
+      - fewest
+    intent: "ORDER BY ASC with LIMIT"
+
+  by_dimension:
+    synonyms:
+      - by
+      - per
+      - for each
+      - grouped by
+      - broken down by
+      - across
+      - split by
+    intent: "GROUP BY clause"
+
+  time_filter:
+    synonyms:
+      - in
+      - during
+      - for year
+      - in year
+      - for
+    intent: "WHERE INVOICE_DATE filter"
+
+  comparison:
+    synonyms:
+      - compare
+      - versus
+      - vs
+      - compared to
+      - against
+    intent: "Comparison query"
+
+  trend:
+    synonyms:
+      - trend
+      - over time
+      - year over year
+      - yoy
+      - month over month
+      - growth
+    intent: "Time series analysis"
+
+  
+
+# Multi-word phrases mapped to SQL patterns
+phrases:
+  "total spend":
+    sql: "SUM(AMOUNT)"
+    description: "Aggregate spend amount"
+
+  "total cost":
+    sql: "SUM(AMOUNT)"
+    description: "Aggregate cost"
+
+  "total expenditure":
+    sql: "SUM(AMOUNT)"
+    description: "Aggregate expenditure"
+
+  "number of suppliers":
+    sql: "COUNT(DISTINCT SUPPLIER_NO)"
+    description: "Count unique suppliers"
+
+  "supplier count":
+    sql: "COUNT(DISTINCT SUPPLIER_NO)"
+    description: "Count unique suppliers"
+
+  "number of invoices":
+    sql: "COUNT(DISTINCT INVOICE_NO)"
+    description: "Count unique invoices"
+
+  "invoice count":
+    sql: "COUNT(DISTINCT INVOICE_NO)"
+    description: "Count unique invoices"
+
+  "number of plants":
+    sql: "COUNT(DISTINCT PLANT_NO)"
+    description: "Count unique plants"
+
+  "plant count":
+    sql: "COUNT(DISTINCT PLANT_NO)"
+    description: "Count unique plants"
+
+  "average spend":
+    sql: "AVG(AMOUNT)"
+    description: "Average transaction amount"
+
+  "average cost":
+    sql: "AVG(AMOUNT)"
+    description: "Average transaction amount"
+
+  "year over year":
+    sql_pattern: "Compare YEAR(INVOICE_DATE) values"
+    description: "Year-over-year comparison"
+
+  "year to date":
+    sql_pattern: "WHERE INVOICE_DATE >= DATEFROMPARTS(YEAR(GETDATE()), 1, 1)"
+    description: "YTD filter"
+
+  "fiscal year":
+    sql_pattern: "INVOICE_DATE BETWEEN 'YYYY-04-01' AND 'YYYY+1-03-31'"
+    description: "Indian fiscal year filter (April to March)"
+
+  "financial year":
+    sql_pattern: "INVOICE_DATE BETWEEN 'YYYY-04-01' AND 'YYYY+1-03-31'"
+    description: "Indian fiscal year filter (April to March)"
+
+  "current fiscal year":
+    sql_pattern: "INVOICE_DATE BETWEEN DATEADD(MONTH, 3, DATEFROMPARTS(YEAR(DATEADD(MONTH, -3, GETDATE())), 1, 1)) AND LAST_DAY(DATEADD(MONTH, 14, DATEADD(MONTH, 3, DATEFROMPARTS(YEAR(DATEADD(MONTH, -3, GETDATE())), 1, 1))))"
+    description: "Current Indian fiscal year"
+
+  "last fiscal year":
+    sql_pattern: "INVOICE_DATE BETWEEN DATEADD(MONTH, -9, DATEFROMPARTS(YEAR(DATEADD(MONTH, -3, GETDATE())), 1, 1)) AND DATEADD(DAY, -1, DATEADD(MONTH, 3, DATEFROMPARTS(YEAR(DATEADD(MONTH, -3, GETDATE())), 1, 1)))"
+    description: "Previous Indian fiscal year"
+
+  "spend per supplier":
+    sql: "SUM(AMOUNT) / COUNT(DISTINCT SUPPLIER_NO)"
+    description: "Average spend per supplier"
+
+  "spend per plant":
+    sql: "SUM(AMOUNT) / COUNT(DISTINCT PLANT_NO)"
+    description: "Average spend per plant"
+
+  "top suppliers":
+    sql_pattern: "ORDER BY SUM(AMOUNT) DESC"
+    description: "Suppliers ranked by spend"
+
+  "top categories":
+    sql_pattern: "ORDER BY SUM(AMOUNT) DESC"
+    description: "Categories ranked by spend"
+
+  "past year":
+    sql_pattern: "WHERE INVOICE_DATE >= DATEADD(MONTH, -12, CAST(GETDATE() AS DATE)) GROUP BY FORMAT(INVOICE_DATE, 'yyyy-MM') ORDER BY 1"
+    description: "Last 12 months with monthly breakdown"
+
+  "over past year":
+    sql_pattern: "WHERE INVOICE_DATE >= DATEADD(MONTH, -12, CAST(GETDATE() AS DATE)) GROUP BY FORMAT(INVOICE_DATE, 'yyyy-MM') ORDER BY 1"
+    description: "Last 12 months with monthly breakdown"
+
+  "last year":
+    sql_pattern: "WHERE INVOICE_DATE >= DATEADD(MONTH, -12, CAST(GETDATE() AS DATE)) GROUP BY FORMAT(INVOICE_DATE, 'yyyy-MM') ORDER BY 1"
+    description: "Last 12 months with monthly breakdown"
+
+  "trend over":
+    sql_pattern: "GROUP BY FORMAT(INVOICE_DATE, 'yyyy-MM') ORDER BY 1"
+    description: "Monthly trend breakdown"
