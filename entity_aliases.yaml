@@ -58,40 +58,37 @@ region_aliases:
   "nordic": "North"
   "scandinavia": "North"
 
-# Country aliases - user term -> actual database value (ISO codes)
+# Country aliases - user term -> actual database value in the COUNTRY column.
+# IMPORTANT: COUNTRY uses 3-letter codes, NOT ISO-2. Verified by column_values
+# snapshot: GER, HUN, MEX, SLO, SRB, USA (Indirect view). Do NOT map to 'DE',
+# 'FR', 'IT', 'GB', 'CN', etc. — those values do NOT exist in COUNTRY and
+# would silently return 0 rows. (ISO-2 codes live in the separate NATION
+# column.) Only include aliases for countries whose suppliers actually exist
+# in the Indirect view — listing France/UK/Japan here would just yield
+# phantom filters.
 country_aliases:
-  "germany": "DE"
-  "deutschland": "DE"
-  "german": "DE"
-  "austria": "AT"
-  "osterreich": "AT"
-  "france": "FR"
-  "french": "FR"
-  "italy": "IT"
-  "italian": "IT"
-  "switzerland": "CH"
-  "swiss": "CH"
-  "spain": "ES"
-  "spanish": "ES"
-  "portugal": "PT"
-  "portuguese": "PT"
-  "united kingdom": "GB"
-  "uk": "GB"
-  "british": "GB"
-  "england": "GB"
-  "united states": "US"
-  "usa": "US"
-  "american": "US"
-  "mexico": "MX"
-  "mexican": "MX"
-  "brazil": "BR"
-  "brazilian": "BR"
-  "china": "CN"
-  "chinese": "CN"
-  "india": "IN"
-  "indian": "IN"
-  "japan": "JP"
-  "japanese": "JP"
+  "germany": "GER"
+  "german": "GER"
+  "deutschland": "GER"
+  "hungary": "HUN"
+  "hungarian": "HUN"
+  "magyar": "HUN"
+  "mexico": "MEX"
+  "mexican": "MEX"
+  "méxico": "MEX"
+  "slovakia": "SLO"
+  "slovakian": "SLO"
+  "slovak": "SLO"
+  "slovensko": "SLO"
+  "serbia": "SRB"
+  "serbian": "SRB"
+  "srbija": "SRB"
+  "united states": "USA"
+  "usa": "USA"
+  "us": "USA"
+  "u.s.": "USA"
+  "america": "USA"
+  "american": "USA"
 
 # Business concept mappings - user phrase -> SQL filter condition
 # These map business terms to actual database filter expressions
