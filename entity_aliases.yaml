@@ -128,8 +128,20 @@ business_concepts:
 
   "supplier responsibility": "\"INCO_TERM\" IN ('DAP', 'DDP', 'DDU')"
   "delivered": "\"INCO_TERM\" IN ('DAP', 'DDP', 'DDU')"
+  "delivered by supplier": "\"INCO_TERM\" IN ('DAP', 'DDP', 'DDU')"
+  "delivered by suppliers": "\"INCO_TERM\" IN ('DAP', 'DDP', 'DDU')"
   "dap": "\"INCO_TERM\" = 'DAP'"
   "ddp": "\"INCO_TERM\" = 'DDP'"
+
+  # Picked-up / non-delivered = COMPLEMENT of supplier-delivered. Used for
+  # binary "delivered vs picked up" comparisons. NULL/blank Incoterms are
+  # bucketed with "picked up" so the two sides cover the entire dataset.
+  "picked up": "\"INCO_TERM\" NOT IN ('DAP', 'DDP', 'DDU') OR \"INCO_TERM\" IS NULL"
+  "picked up by supplier": "\"INCO_TERM\" NOT IN ('DAP', 'DDP', 'DDU') OR \"INCO_TERM\" IS NULL"
+  "picked up by the supplier": "\"INCO_TERM\" NOT IN ('DAP', 'DDP', 'DDU') OR \"INCO_TERM\" IS NULL"
+  "buyer collected": "\"INCO_TERM\" NOT IN ('DAP', 'DDP', 'DDU') OR \"INCO_TERM\" IS NULL"
+  "other incoterms": "\"INCO_TERM\" NOT IN ('DAP', 'DDP', 'DDU') OR \"INCO_TERM\" IS NULL"
+  "non-delivered": "\"INCO_TERM\" NOT IN ('DAP', 'DDP', 'DDU') OR \"INCO_TERM\" IS NULL"
 
 # Commodity category aliases
 commodity_aliases:
